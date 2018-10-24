@@ -19,11 +19,11 @@ namespace Makoto
         [SerializeField]
         [Range(1, 10)]
         // 振り返る時間
-        private int LOOK_BACK_TIME = 1;
+        private float LOOK_BACK_TIME = 1.0f;
 
         [SerializeField]
         [Range(0, 10)]
-        private int FIRING_INTERVAL = 1;
+        private float FIRING_INTERVAL = 1.0f;
 
         private State state;
 
