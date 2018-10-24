@@ -16,11 +16,11 @@ public class PlayerController : MonoBehaviour
     private bool faceLeft;
     private float stateTime;
 
-    private Status m_playerStatus;
-    public Status m_statusType;
-    private Item m_item;
+    private Status m_playerStatus; //プレイヤーのステータス
+    public Status m_statusType;    //見本にするステータス   
+    private Item m_item;           //アイテム
     private int m_nowItemNumber;//現在のアイテム番号
-    public Score m_score;
+    public Score m_score;       //スコア
     bool m_downFlag;
     //操作キー
     public KeyCode UpKey;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private float gravity = 0.1f;
     private float friction = 0.9f;
 
-
+    DIRECTION dir;
 
     // Use this for initialization
     void Start()
@@ -127,9 +127,6 @@ public class PlayerController : MonoBehaviour
         stateTime -= 60.0f * Time.deltaTime;
         if (stateTime <= 0)
         {
-            Color color = this.GetComponent<Renderer>().material.color;
-            color.a = 1.0f;
-            this.GetComponent<Renderer>().material.color = color;
             state = PLAYER_STATE.DEFAULT;
             m_playerStatus.SetHp(3);
         }
@@ -137,15 +134,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        //if (Input.GetKey(LeftKey))
-        //{
-        //    rb.velocity = new Vector3(-m_playerStatus.GetSpeed(), rb.velocity.y, 0);
-        //}
-        //if (Input.GetKey(RightKey))
-        //{
-        //    rb.velocity = new Vector3(m_playerStatus.GetSpeed(), rb.velocity.y, 0);
-        //}
-
+        
         switch (CheckStateLRKeyLater())
         {
             //左右に移動していない
@@ -201,9 +190,6 @@ public class PlayerController : MonoBehaviour
     {
         state = PLAYER_STATE.SWOON;
         stateTime = 300.0f;
-        Color color = this.GetComponent<Renderer>().material.color;
-        color.a = 0.5f;
-        this.GetComponent<Renderer>().material.color = color;
     }
 
     void OnCollisionExit(Collision c)
@@ -237,40 +223,41 @@ public class PlayerController : MonoBehaviour
         ContactPoint point = c.contacts[0];
 
         //衝突方向によってフラグを設定する
-        DIRECTION dir;
+        // DIRECTION dir;
+        if (c.transform.tag != "Item" && c.transform.tag != "Coin")
+        {
 
-        if (point.normal.y < 0)
-        {
-            collisionCount[(int)DIRECTION.UP] += 1;
-            dir = DIRECTION.UP;
+            if (point.normal.y < 0)
+            {
+                collisionCount[(int)DIRECTION.UP] += 1;
+                dir = DIRECTION.UP;
+            }
+            else if (point.normal.y > 0)
+            {
+                collisionCount[(int)DIRECTION.DOWN] += 1;
+                dir = DIRECTION.DOWN;
+            }
+            else if (point.normal.x < 0)
+            {
+                collisionCount[(int)DIRECTION.RIGHT] += 1;
+                dir = DIRECTION.RIGHT;
+            }
+            else
+            {
+                collisionCount[(int)DIRECTION.LEFT] += 1;
+                dir = DIRECTION.LEFT;
+            }
         }
-        else if (point.normal.y > 0)
-        {
-            collisionCount[(int)DIRECTION.DOWN] += 1;
-            dir = DIRECTION.DOWN;
-        }
-        else if (point.normal.x < 0)
-        {
-            collisionCount[(int)DIRECTION.RIGHT] += 1;
-            dir = DIRECTION.RIGHT;
-        }
-        else
-        {
-            collisionCount[(int)DIRECTION.LEFT] += 1;
-            dir = DIRECTION.LEFT;
-        }
-
-        //壁との処理
         if (c.transform.tag == "StageObject")
         {
-            collisionWallCount[(int)dir] += 1;
+            //壁との処理
 
-            //挟まっているかの判定
+            collisionWallCount[(int)dir] += 1;
+            //挟まった時の処理
             if (collisionWallCount[(int)DIRECTION.UP] > 0 && collisionWallCount[(int)DIRECTION.DOWN] > 0 ||
                 collisionWallCount[(int)DIRECTION.RIGHT] > 0 && collisionWallCount[(int)DIRECTION.LEFT] > 0)
             {
                 //Debug.Log("death : " + this.gameObject.name);
-                //挟まった時の処理
                 Vector3 pos = Camera.main.transform.position;
                 this.transform.position = new Vector3(pos.x, pos.y, 0);
                 rb.velocity = Vector3.zero;
@@ -297,39 +284,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
-        if (c.transform.tag == "Item") //もしアイテムと当たったら
-        {
-            //アイテム番号を調べそれにあったアイテムを取得する
-            switch (c.transform.GetComponent<ItemObject>().GetItemNumber())
-            {
-                case 0: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<Item>(); break;
-                //ここより下にバフ効果を受けるアイテムを書く
-                case 1: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<SpeedUp>(); break;
-                case 2: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<AttackUp>(); break;
-                case 3: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<JumpUp>(); break;
-                case 4: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<HpUp>(); break;
-                case 5: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<DefenceUp>(); break;
-                case 6: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<ScoreUp>(); break;
-                case 7: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<Replaceall>(); break;
-                case 8: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<ReplaceFirstPlace>(); break;
-                ///ここより下にデバフ効果を受けるアイテムを書く
-                case -1: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<SpeedDown>(); break;
-                case -2: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<AttackDown>(); break;
-                case -3: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<JumpDown>(); break;
-                case -4: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<HpDown>(); break;
-                case -5: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<DefenceDown>(); break;
-                case -6: m_nowItemNumber = c.transform.GetComponent<ItemObject>().GetItemNumber(); m_item = gameObject.AddComponent<ScoreDown>(); break;
-
-                //登録外のアイテムに触れた場合
-                default: Debug.Log("未知のアイテムに触れました。登録されているアイテム番号を確認してください"); break;
-
-            }
-
-        }
-
-        //衝突情報の登録
-        //Debug.Log(c.gameObject.name + point.normal+c.gameObject.GetHashCode().ToString() + ":"+collisionDataMap.Count);
+        
         collisionDataMap.Add(c.gameObject.GetHashCode(), dir);
         
 
@@ -417,6 +372,7 @@ public class PlayerController : MonoBehaviour
 
     void SetStatus()
     {
+
         //ここでステータスをセットする
         m_playerStatus.SetHp(m_statusType.GetHp());
         m_playerStatus.SetPower(m_statusType.GetPower());
@@ -435,6 +391,8 @@ public class PlayerController : MonoBehaviour
             m_nowItemNumber = 0;
             state = PLAYER_STATE.DEFAULT;
         }
+
+
     }
 
  
@@ -462,5 +420,20 @@ public class PlayerController : MonoBehaviour
     public void SetDownFlag(bool flag)// ダウンフラグをセット
     {
         m_downFlag = flag;
+    }
+
+    public int GetNowItemNumber()
+    {
+        return m_nowItemNumber;
+    }
+
+    public void SetNowItemNumber(int item)
+    {
+        m_nowItemNumber = item;
+    }
+
+    public void SetItem(Item item)
+    {
+        m_item = item;
     }
 }

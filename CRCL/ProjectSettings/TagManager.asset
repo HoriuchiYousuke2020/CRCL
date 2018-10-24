@@ -9,7 +9,6 @@ TagManager:
   - Item
   - Enemy
   - Floor
-  - MoveRange
   layers:
   - Default
   - TransparentFX
@@ -20,8 +19,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - MoveObject
-  - Player
+  - 
+  - 
   - 
   - 
   - 
