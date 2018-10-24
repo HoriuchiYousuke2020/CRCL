@@ -6,11 +6,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    ////パラメータ
-    //public int hp;
-    //public float speed;
-    //public float jumpPower;
-    //public GameObject haveItem;
     //キャラクター制御
     private PLAYER_STATE state;
     private bool faceLeft;
@@ -129,6 +124,9 @@ public class PlayerController : MonoBehaviour
         {
             state = PLAYER_STATE.DEFAULT;
             m_playerStatus.SetHp(3);
+            Color color = this.GetComponent<Renderer>().material.color;
+            color.a = 1.0f;
+            this.GetComponent<Renderer>().material.color = color;
         }
     }
 
@@ -190,6 +188,11 @@ public class PlayerController : MonoBehaviour
     {
         state = PLAYER_STATE.SWOON;
         stateTime = 300.0f;
+
+        Color color = this.GetComponent<Renderer>().material.color;
+        color.a = 0.5f;
+        this.GetComponent<Renderer>().material.color = color;
+
     }
 
     void OnCollisionExit(Collision c)
@@ -261,6 +264,7 @@ public class PlayerController : MonoBehaviour
                 Vector3 pos = Camera.main.transform.position;
                 this.transform.position = new Vector3(pos.x, pos.y, 0);
                 rb.velocity = Vector3.zero;
+                Swoon();
             }
         }
         //プレイヤーとの処理
