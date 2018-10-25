@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("a");
         //左右移動制御用
         GetLRKeyState();
         CheckItemKey();
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = new Vector3(rb.velocity.x * friction, rb.velocity.y - gravity * Time.deltaTime, 0);
+        
     }
 
     //通常状態の処理
@@ -134,6 +136,7 @@ public class PlayerController : MonoBehaviour
         if (stateTime <= 0)
         {
             state = PLAYER_STATE.NORMAL;
+          
         }
     }
 
@@ -144,6 +147,7 @@ public class PlayerController : MonoBehaviour
         if (stateTime <= 0)
         {
             state = PLAYER_STATE.NORMAL;
+            ColorChangeA(1.0f);
             m_playerStatus.SetHp(3);
         }
     }
@@ -156,6 +160,7 @@ public class PlayerController : MonoBehaviour
         {
             state = PLAYER_STATE.NORMAL;
             ColorChangeA(1.0f);
+            m_playerStatus.SetHp(3);
         }
     }
 
@@ -222,12 +227,12 @@ public class PlayerController : MonoBehaviour
     void Damaged()
     {
         state = PLAYER_STATE.DAMAGED;
-        stateTime = 30.0f;
+        stateTime = 120.0f;
     }
 
     void Swoon()
     {
-        ColorChangeA(1.0f);
+        ColorChangeA(0.5f);
         state = PLAYER_STATE.SWOON;
         stateTime = 300.0f;
     }
@@ -254,17 +259,20 @@ public class PlayerController : MonoBehaviour
             if (c.transform.gameObject.GetComponent<PlayerController>().state == PLAYER_STATE.ATTACK &&
                 (dir == DIRECTION.LEFT || dir == DIRECTION.RIGHT))
             {
-                int hp = m_playerStatus.GetHp();
-                if (hp > 0)
+                rb.AddForce(c.contacts[0].normal * 1500.0f);
+               // int hp = m_playerStatus.GetHp();
+                if (m_playerStatus.GetHp() > 0)
                 {
                     m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
-                    if (hp == 0)
+                    if (m_playerStatus.GetHp() == 0)
                     {
                         Swoon();
                     }
                     else
                     {
+                       
                         Damaged();
+                      
                     }
                 }
             }
@@ -277,6 +285,14 @@ public class PlayerController : MonoBehaviour
             int hp = m_playerStatus.GetHp();
             if (hp > 0)
             {
+                if (Mathf.Abs(c.contacts[0].normal.y) > 0)
+                {
+                    rb.AddForce(c.contacts[0].normal * 300.0f);
+                }
+                else if (Mathf.Abs(c.contacts[0].normal.x) > 0)
+                {
+                    rb.AddForce(c.contacts[0].normal * 1500.0f);
+                }
                 m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
                 if (hp == 0)
                 {
