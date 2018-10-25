@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Floor
   - MoveRange
+  - Goal
   layers:
   - Default
   - TransparentFX

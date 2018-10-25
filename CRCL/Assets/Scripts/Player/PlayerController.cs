@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
             case PLAYER_STATE.DAMAGED: UpdateStateDamaged(); break;
             case PLAYER_STATE.SWOON: UpdateStateSwoon(); break;
             case PLAYER_STATE.PRESSED: UpdateStatePressed(); break;
+            case PLAYER_STATE.GOAL:   UpdateStateGoal(); break;
             default:
                 Debug.Log(gameObject.name + "の状態が不正です");
                 break;
@@ -188,6 +190,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void UpdateStateGoal()
+    {
+        m_score.AddScore(1000);
+        SceneManager.LoadScene("ResultScene");
+    }
+
     void Jump()
     {
         if (Input.GetKeyDown(JumpKey) && col.collisionCount[(int)DIRECTION.DOWN] > 0)
@@ -280,6 +288,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+<<<<<<< HEAD
+=======
+
+        if(tag == "Goal")
+        {
+            state = PLAYER_STATE.GOAL;
+        }
+        
+>>>>>>> 38f33bf857aad0aabb0a6ec0d49cfbefd4fdf94c
     }
 
     void GetLRKeyState()
@@ -360,6 +377,7 @@ public class PlayerController : MonoBehaviour
         DAMAGED,
         SWOON,
         PRESSED,
+        GOAL,
         MAX
     }
 
