@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
-    public float startSpeed = 0.1f;
+    [SerializeField]
+    private float startSpeed = 0.1f;
     //true = hight : false = width
-    public bool state = true;
+    [SerializeField]
+    private bool state = true;
     private float speed;
 	// Use this for initialization
 	void Start ()

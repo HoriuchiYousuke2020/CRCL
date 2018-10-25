@@ -6,7 +6,6 @@ public class CameraTarget : MonoBehaviour
 {
     private int targetValue = 0;
     private STATE state;
-    public Vector3 cameraPos;
 
     enum STATE
     {
@@ -48,6 +47,6 @@ public class CameraTarget : MonoBehaviour
 
         float distanceX = player[targetValue].transform.position.x - this.transform.position.x;
         float distanceY = player[targetValue].transform.position.y - this.transform.position.y;
-        this.transform.position = new Vector3(cameraPos.x + this.transform.position.x + (distanceX / 10), this.transform.position.y + (distanceY / 10), cameraPos.z);
+        this.transform.position = new Vector3(this.transform.position.x + (distanceX / 10), this.transform.position.y + (distanceY / 10), this.transform.position.z);
     }
 }
