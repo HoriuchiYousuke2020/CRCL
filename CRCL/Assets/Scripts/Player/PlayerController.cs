@@ -288,15 +288,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-<<<<<<< HEAD
-=======
 
         if(tag == "Goal")
         {
             state = PLAYER_STATE.GOAL;
         }
-        
->>>>>>> 38f33bf857aad0aabb0a6ec0d49cfbefd4fdf94c
     }
 
     void GetLRKeyState()
