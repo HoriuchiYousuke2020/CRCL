@@ -155,9 +155,7 @@ public class PlayerController : MonoBehaviour
         if (stateTime <= 0)
         {
             state = PLAYER_STATE.NORMAL;
-            Color color = this.GetComponent<Renderer>().material.color;
-            color.a = 1.0f;
-            this.GetComponent<Renderer>().material.color = color;
+            ColorChangeA(1.0f);
         }
     }
 
@@ -229,6 +227,7 @@ public class PlayerController : MonoBehaviour
 
     void Swoon()
     {
+        ColorChangeA(1.0f);
         state = PLAYER_STATE.SWOON;
         stateTime = 300.0f;
     }
@@ -239,9 +238,7 @@ public class PlayerController : MonoBehaviour
         this.transform.position = new Vector3(pos.x, pos.y, 0);
         rb.velocity = Vector3.zero;
         col.SetIsPress(false);
-        Color color = this.GetComponent<Renderer>().material.color;
-        color.a = 0.5f;
-        this.GetComponent<Renderer>().material.color = color;
+        ColorChangeA(0.5f);
         state = PLAYER_STATE.PRESSED;
         stateTime = 120.0f;
     }
@@ -276,14 +273,26 @@ public class PlayerController : MonoBehaviour
         ////////////////////////////////////
         if (tag == "Enemy")  //もし敵と当たったら   
         {
-
+            rb.AddForce(c.contacts[0].normal*700.0f);
+            int hp = m_playerStatus.GetHp();
+            if (hp > 0)
+            {
+                m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
+                if (hp == 0)
+                {
+                    Swoon();
+                }
+                else
+                {
+                    Damaged();
+                }
+            }
         }
 
         if(tag == "Goal")
         {
             state = PLAYER_STATE.GOAL;
         }
-        
     }
 
     void GetLRKeyState()
@@ -431,5 +440,12 @@ public class PlayerController : MonoBehaviour
     public void SetItem(Item item)
     {
         m_item = item;
+    }
+
+    void ColorChangeA(float a)
+    {
+        Color color = this.GetComponent<Renderer>().material.color;
+        color.a = a;
+        this.GetComponent<Renderer>().material.color = color;
     }
 }
