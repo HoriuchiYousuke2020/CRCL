@@ -107,6 +107,11 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
 
+        if(this.GetComponent<Renderer>().material.color.a  != 1.0)
+        {
+            ColorChangeA(1.0f);
+        }
+
         if (Input.GetKeyDown(AttackKey))
         {
             Attack();
