@@ -221,13 +221,14 @@ public class PlayerController : MonoBehaviour
 
     void Damaged()
     {
+        m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
         state = PLAYER_STATE.DAMAGED;
-        stateTime = 30.0f;
+        stateTime = 120.0f;
     }
 
     void Swoon()
     {
-        ColorChangeA(1.0f);
+        ColorChangeA(0.5f);
         state = PLAYER_STATE.SWOON;
         stateTime = 300.0f;
     }
@@ -254,10 +255,11 @@ public class PlayerController : MonoBehaviour
             if (c.transform.gameObject.GetComponent<PlayerController>().state == PLAYER_STATE.ATTACK &&
                 (dir == DIRECTION.LEFT || dir == DIRECTION.RIGHT))
             {
+                rb.AddForce(c.contacts[0].normal * 1500.0f);
+                
                 int hp = m_playerStatus.GetHp();
                 if (hp > 0)
                 {
-                    m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
                     if (hp == 0)
                     {
                         Swoon();
@@ -273,7 +275,7 @@ public class PlayerController : MonoBehaviour
         ////////////////////////////////////
         if (tag == "Enemy")  //もし敵と当たったら   
         {
-            rb.AddForce(c.contacts[0].normal*700.0f);
+            rb.AddForce(c.contacts[0].normal * 1500.0f);
             int hp = m_playerStatus.GetHp();
             if (hp > 0)
             {
@@ -379,7 +381,6 @@ public class PlayerController : MonoBehaviour
 
     void SetStatus()
     {
-
         //ここでステータスをセットする
         m_playerStatus.SetHp(m_statusType.GetHp());
         m_playerStatus.SetPower(m_statusType.GetPower());
