@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     //衝突判定用フラグ
     private CollisionCount col;
-
+    private Collision nowCollision;
     //物理関係
     Rigidbody rb;
     private float gravity = 0.1f;
@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("a");
         //左右移動制御用
         GetLRKeyState();
         CheckItemKey();
@@ -90,6 +91,16 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
+        //衝突判定
+        string tag = nowCollision.transform.tag;
+        switch (tag)
+        {
+            case "Player"   : CollisionPlayer();    break;
+            case "Enemy"    : CollisionEnemy();     break;
+            case "Goal"     : CollisionGoal();      break;
+            default:break;
+        }
+
         //壁判定
         if (col.GetIsPress())
         {
@@ -97,6 +108,7 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = new Vector3(rb.velocity.x * friction, rb.velocity.y - gravity * Time.deltaTime, 0);
+        
     }
 
     //通常状態の処理
@@ -134,6 +146,7 @@ public class PlayerController : MonoBehaviour
         if (stateTime <= 0)
         {
             state = PLAYER_STATE.NORMAL;
+          
         }
     }
 
@@ -144,6 +157,7 @@ public class PlayerController : MonoBehaviour
         if (stateTime <= 0)
         {
             state = PLAYER_STATE.NORMAL;
+            ColorChangeA(1.0f);
             m_playerStatus.SetHp(3);
         }
     }
@@ -156,12 +170,12 @@ public class PlayerController : MonoBehaviour
         {
             state = PLAYER_STATE.NORMAL;
             ColorChangeA(1.0f);
+            m_playerStatus.SetHp(3);
         }
     }
 
     void Move()
     {
-
         switch (CheckStateLRKeyLater())
         {
             //左右に移動していない
@@ -246,55 +260,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-        string tag = c.transform.tag;
-        //プレイヤーとの処理
-        if (tag == "Player")
-        {
-            //敵が攻撃状態で横から衝突したらダメージを受ける
-            dir = (DIRECTION)col.GetDirection(c.gameObject);
-            if (c.transform.gameObject.GetComponent<PlayerController>().state == PLAYER_STATE.ATTACK &&
-                (dir == DIRECTION.LEFT || dir == DIRECTION.RIGHT))
-            {
-                rb.AddForce(c.contacts[0].normal * 1500.0f);
-                
-                int hp = m_playerStatus.GetHp();
-                if (hp > 0)
-                {
-                    if (hp == 0)
-                    {
-                        Swoon();
-                    }
-                    else
-                    {
-                        Damaged();
-                    }
-                }
-            }
-        }
-
-        ////////////////////////////////////
-        if (tag == "Enemy")  //もし敵と当たったら   
-        {
-            rb.AddForce(c.contacts[0].normal * 1500.0f);
-            int hp = m_playerStatus.GetHp();
-            if (hp > 0)
-            {
-                m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
-                if (hp == 0)
-                {
-                    Swoon();
-                }
-                else
-                {
-                    Damaged();
-                }
-            }
-        }
-
-        if(tag == "Goal")
-        {
-            state = PLAYER_STATE.GOAL;
-        }
+        nowCollision = c;
     }
 
     void GetLRKeyState()
@@ -438,15 +404,90 @@ public class PlayerController : MonoBehaviour
         m_nowItemNumber = item;
     }
 
+    /// <summary>
+    /// アイテムの取得
+    /// </summary>
+    /// <param name="item">拾ったアイテム</param>
     public void SetItem(Item item)
     {
         m_item = item;
     }
 
+    /// <summary>
+    /// Color.aの変更
+    /// </summary>
+    /// <param name="a">アルファの値</param>
     void ColorChangeA(float a)
     {
         Color color = this.GetComponent<Renderer>().material.color;
         color.a = a;
         this.GetComponent<Renderer>().material.color = color;
+    }
+
+    /// <summary>
+    /// プレイヤ衝突時の処理
+    /// </summary>
+    void CollisionPlayer()
+    {
+        //敵が攻撃状態で横から衝突したらダメージを受ける
+        dir = (DIRECTION)col.GetDirection(nowCollision.gameObject);
+        if (nowCollision.transform.gameObject.GetComponent<PlayerController>().state == PLAYER_STATE.ATTACK &&
+            (dir == DIRECTION.LEFT || dir == DIRECTION.RIGHT))
+        {
+            rb.AddForce(nowCollision.contacts[0].normal * 1500.0f);
+            if (m_playerStatus.GetHp() > 0)
+            {
+                m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
+                if (m_playerStatus.GetHp() == 0)
+                {
+                    Swoon();
+                }
+                else
+                {
+
+                    Damaged();
+
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Enemy衝突時の処理
+    /// </summary>
+    void CollisionEnemy()
+    {
+        //衝突時の反発
+        if (Mathf.Abs(nowCollision.contacts[0].normal.y) > 0)
+        {
+            rb.AddForce(nowCollision.contacts[0].normal * 300.0f);
+        }
+        else if (Mathf.Abs(nowCollision.contacts[0].normal.x) > 0)
+        {
+            rb.AddForce(nowCollision.contacts[0].normal * 1500.0f);
+        }
+
+        int hp = m_playerStatus.GetHp();
+
+        if (hp > 0)
+        {
+            m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
+            if (hp == 0)
+            {
+                Swoon();
+            }
+            else
+            {
+                Damaged();
+            }
+        }
+    }
+
+    /// <summary>
+    /// ゴール衝突時の処理
+    /// </summary>
+    void CollisionGoal()
+    {
+        state = PLAYER_STATE.GOAL;
     }
 }
