@@ -7,12 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    ////パラメータ
-    //public int hp;
-    //public float speed;
-    //public float jumpPower;
-    //public GameObject haveItem;
-
     //キャラクター制御
     private PLAYER_STATE state;    //プレイヤーの状態
     private bool faceLeft;         //プレイヤーの向いている向き
@@ -24,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private int m_nowItemNumber;   //現在のアイテム番号
     public Score m_score;          //スコア
     bool m_downFlag;
-
+    bool m_outFlag;
     //操作キー
     public KeyCode UpKey;
     public KeyCode DownKey;
@@ -67,11 +61,22 @@ public class PlayerController : MonoBehaviour
         SetStatus();
         m_item = gameObject.AddComponent<Item>();
         m_nowItemNumber = 0;
+        m_outFlag = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (m_outFlag == true)
+        {
+            Vector3 pos = Camera.main.transform.position;
+            this.transform.position = new Vector3(pos.x, pos.y, 0);
+            rb.velocity = Vector3.zero;
+            m_outFlag = false;
+            ColorChangeA(0.5f);
+            state = PLAYER_STATE.PRESSED;
+            stateTime = 120.0f;
+        }
         Debug.Log("a");
         //左右移動制御用
         GetLRKeyState();
@@ -85,7 +90,7 @@ public class PlayerController : MonoBehaviour
             case PLAYER_STATE.DAMAGED: UpdateStateDamaged(); break;
             case PLAYER_STATE.SWOON: UpdateStateSwoon(); break;
             case PLAYER_STATE.PRESSED: UpdateStatePressed(); break;
-            case PLAYER_STATE.GOAL:   UpdateStateGoal(); break;
+            case PLAYER_STATE.GOAL: UpdateStateGoal(); break;
             default:
                 Debug.Log(gameObject.name + "の状態が不正です");
                 break;
@@ -95,20 +100,24 @@ public class PlayerController : MonoBehaviour
         string tag = nowCollision.transform.tag;
         switch (tag)
         {
-            case "Player"   : CollisionPlayer();    break;
-            case "Enemy"    : CollisionEnemy();     break;
-            case "Goal"     : CollisionGoal();      break;
-            default:break;
+            case "Player": CollisionPlayer(); break;
+            case "Enemy": CollisionEnemy(); break;
+            case "Goal": CollisionGoal(); break;
+            default: break;
         }
 
         //壁判定
         if (col.GetIsPress())
         {
             Pressed();
+
         }
 
+
+
+
         rb.velocity = new Vector3(rb.velocity.x * friction, rb.velocity.y - gravity * Time.deltaTime, 0);
-        
+
     }
 
     //通常状態の処理
@@ -116,7 +125,10 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
-
+        if (this.GetComponent<Renderer>().material.color.a <= 1.0f)
+        {
+            ColorChangeA(1.0f);
+        }
         if (Input.GetKeyDown(AttackKey))
         {
             Attack();
@@ -146,7 +158,7 @@ public class PlayerController : MonoBehaviour
         if (stateTime <= 0)
         {
             state = PLAYER_STATE.NORMAL;
-          
+
         }
     }
 
@@ -490,4 +502,10 @@ public class PlayerController : MonoBehaviour
     {
         state = PLAYER_STATE.GOAL;
     }
+
+    void OnBecameInvisible()
+    {
+        m_outFlag = true;
+    }
+
 }
