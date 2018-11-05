@@ -1831,6 +1831,16 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: f0a15d3fdef46494fafb63b199bc9140,
         type: 2}
+    - target: {fileID: 65831134084545688, guid: f384718f8d8bf064aa2e657a466f52d2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54417940271154478, guid: f384718f8d8bf064aa2e657a466f52d2,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
   m_IsPrefabAsset: 0
