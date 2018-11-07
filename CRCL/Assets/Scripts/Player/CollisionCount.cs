@@ -25,7 +25,11 @@ public class CollisionCount : MonoBehaviour {
     public DIRECTION GetDirection(GameObject obj)
     {
         int key = obj.GetHashCode();
-        return collisionDataMap[key];
+        if (collisionDataMap.ContainsKey(key))
+        {
+            return collisionDataMap[key];
+        }
+        return DIRECTION.MAX;
     }
 
     void OnCollisionEnter(Collision c)
