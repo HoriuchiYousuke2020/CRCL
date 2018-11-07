@@ -2282,8 +2282,8 @@ GameObject:
   - component: {fileID: 529080790}
   - component: {fileID: 529080789}
   - component: {fileID: 529080788}
-  - component: {fileID: 529080786}
   - component: {fileID: 529080787}
+  - component: {fileID: 529080786}
   m_Layer: 9
   m_Name: Player2
   m_TagString: Player
@@ -3280,11 +3280,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3, type: 2}
       propertyPath: m_RootOrder
@@ -3296,11 +3296,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3, type: 2}
       propertyPath: m_LocalScale.x
-      value: 4.24375
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e875487c0763d1a479264bcbedbbebb3, type: 2}
@@ -4527,6 +4531,10 @@ Prefab:
     - target: {fileID: 400002, guid: 4bcc6e8c068e94444a2d67089f293685, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 4bcc6e8c068e94444a2d67089f293685, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bcc6e8c068e94444a2d67089f293685, type: 3}
@@ -6594,8 +6602,8 @@ GameObject:
   - component: {fileID: 1536280340}
   - component: {fileID: 1536280339}
   - component: {fileID: 1536280338}
-  - component: {fileID: 1536280336}
   - component: {fileID: 1536280337}
+  - component: {fileID: 1536280336}
   m_Layer: 9
   m_Name: Player1
   m_TagString: Player
@@ -6650,8 +6658,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ceac93b44646154b8fba277840ba212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionCount: 00000000000000000000000000000000
-  collisionWallCount: 00000000000000000000000000000000
+  collisionCount: 00000000010000000200000003000000
+  collisionWallCount: 00000000010000000200000003000000
 --- !u!54 &1536280338
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7445,6 +7453,10 @@ Prefab:
     - target: {fileID: 400000, guid: 5629ac724fa47fb46b95d670e0e13810, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5629ac724fa47fb46b95d670e0e13810, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5629ac724fa47fb46b95d670e0e13810, type: 3}

@@ -81,17 +81,17 @@ public class CollisionCount : MonoBehaviour {
 
     void OnCollisionExit(Collision c)
     {
-        //Debug.Log("~"+c.gameObject.name + c.gameObject.GetHashCode().ToString() + ":" + collisionDataMap.Count);
-
+        Debug.Log("~"+c.gameObject.name + c.gameObject.GetHashCode().ToString() + ":" + collisionDataMap.Count);
+       
         //アイテムかコインの時は処理を行わない
         string tag = c.transform.tag;
-        if (tag == "Item" || tag == "Coin")
+        if (tag == "Item" || tag == "Coin" )
         {
             return;
         }
-
-
         int key = c.gameObject.GetHashCode();
+
+
         DIRECTION dir = collisionDataMap[key];
         //衝突方向によってフラグを設定する
         switch (dir)

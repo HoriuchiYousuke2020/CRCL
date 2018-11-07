@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
             case "Player": CollisionPlayer(); break;
             case "Enemy": CollisionEnemy(); break;
             case "Goal": CollisionGoal(); break;
+            case "Item": break;
             default: break;
         }
 
@@ -247,7 +248,7 @@ public class PlayerController : MonoBehaviour
 
     void Damaged()
     {
-        m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
+       // m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
         state = PLAYER_STATE.DAMAGED;
         stateTime = 120.0f;
     }
@@ -272,6 +273,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
+        if (c.transform.tag == "Item") return;
         nowCollision = c;
     }
 
@@ -446,10 +448,11 @@ public class PlayerController : MonoBehaviour
         if (nowCollision.transform.gameObject.GetComponent<PlayerController>().state == PLAYER_STATE.ATTACK &&
             (dir == DIRECTION.LEFT || dir == DIRECTION.RIGHT))
         {
-            rb.AddForce(nowCollision.contacts[0].normal * 1500.0f);
-            if (m_playerStatus.GetHp() > 0)
+            rb.AddForce(nowCollision.contacts[0].normal * 150.0f);
+            if (m_playerStatus.GetHp() >0)
             {
-                m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
+                Debug.Log(m_playerStatus.GetHp());
+               m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
                 if (m_playerStatus.GetHp() == 0)
                 {
                     Swoon();
@@ -479,18 +482,19 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(nowCollision.contacts[0].normal * 1500.0f);
         }
 
-        int hp = m_playerStatus.GetHp();
-
-        if (hp > 0)
+        if (m_playerStatus.GetHp() > 0)
         {
+            Debug.Log(m_playerStatus.GetHp());
             m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
-            if (hp == 0)
+            if (m_playerStatus.GetHp() == 0)
             {
                 Swoon();
             }
             else
             {
+
                 Damaged();
+
             }
         }
     }
