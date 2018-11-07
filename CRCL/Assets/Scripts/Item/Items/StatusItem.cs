@@ -37,7 +37,7 @@ public class SpeedDown : Item
     public override void UseItem(PlayerController player)
     {
         //プレイヤーの速度を1下げる
-        player.GetStatus().SetSpeed(player.GetStatus().GetSpeed() - 1);
+        player.GetStatus().SetSpeed(player.GetStatus().GetSpeed() -1);
         m_isUsedFlag = true;
      
     }

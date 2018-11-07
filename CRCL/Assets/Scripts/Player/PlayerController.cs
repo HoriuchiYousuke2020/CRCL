@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using GamepadInput;
 
 
 public class PlayerController : MonoBehaviour
@@ -28,6 +28,12 @@ public class PlayerController : MonoBehaviour
     public KeyCode AttackKey;
     public KeyCode ItemKey;
 
+    [SerializeField]
+   private GamePad.Index m_padNum;
+   
+
+    [SerializeField]
+    private int m_playerNumber;
     //キー入力状態保存用
     private int leftKeyState;
     private int rightKeyState;
@@ -43,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
     DIRECTION dir;
 
+    GamepadState keyState;
     // Use this for initialization
     void Start()
     {
@@ -62,11 +69,14 @@ public class PlayerController : MonoBehaviour
         m_item = gameObject.AddComponent<Item>();
         m_nowItemNumber = 0;
         m_outFlag = false;
+       
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        keyState = GamePad.GetState(m_padNum, false);
         if (m_outFlag == true)
         {
             Vector3 pos = Camera.main.transform.position;
@@ -114,6 +124,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        //if(Input.GetAxis("joypad1 jump") > 0 )
+        //{
+        //    rb.AddForce(m_playerStatus.GetjumpPower() * Vector3.up);
+        //}
 
 
 
@@ -130,7 +144,7 @@ public class PlayerController : MonoBehaviour
         {
             ColorChangeA(1.0f);
         }
-        if (Input.GetKeyDown(AttackKey))
+        if (GamePad.GetButtonDown(GamePad.Button.X,m_padNum) || Input.GetKeyDown(AttackKey))
         {
             Attack();
         }
@@ -151,7 +165,7 @@ public class PlayerController : MonoBehaviour
     {
         UseItem();
     }
-
+   
     //ダメージを受けた状態の処理
     void UpdateStateDamaged()
     {
@@ -215,6 +229,10 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("プレイヤーの左右移動で不正な値が渡されました");
                 break;
         }
+
+       
+
+      
     }
 
     void UpdateStateGoal()
@@ -225,9 +243,10 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(JumpKey) && col.collisionCount[(int)DIRECTION.DOWN] > 0)
+        if ((GamePad.GetButtonDown(GamePad.Button.A,m_padNum)|| Input.GetKeyDown(JumpKey)) && col.collisionCount[(int)DIRECTION.DOWN] > 0)
         {
             rb.AddForce(m_playerStatus.GetjumpPower() * Vector3.up);
+            Debug.Log("");
         }
     }
 
@@ -279,7 +298,7 @@ public class PlayerController : MonoBehaviour
 
     void GetLRKeyState()
     {
-        if (Input.GetKey(LeftKey))
+        if (keyState.LeftStickAxis.x < 0 || Input.GetKey(LeftKey))
         {
             leftKeyState++;
         }
@@ -288,9 +307,10 @@ public class PlayerController : MonoBehaviour
             leftKeyState = 0;
         }
 
-        if (Input.GetKey(RightKey))
+        if (keyState.LeftStickAxis.x > 0 || Input.GetKey(RightKey))
         {
             rightKeyState++;
+          
         }
         else
         {
@@ -300,7 +320,7 @@ public class PlayerController : MonoBehaviour
 
     void CheckItemKey()
     {
-        if (Input.GetKeyDown(ItemKey) && m_nowItemNumber != 0)
+        if ((GamePad.GetButtonDown(GamePad.Button.B,m_padNum)|| Input.GetKeyDown(ItemKey)) && m_nowItemNumber != 0)
         {
             state = PLAYER_STATE.ITEMUSE;
         }
