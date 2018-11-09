@@ -31,5 +31,13 @@ namespace Makoto
         {
             transform.Translate(new Vector3(-SPEED, 0, 0));
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.tag == "Player")
+            {
+                Destroy(transform.gameObject);
+            }
+        }
     }
 }
