@@ -651,7 +651,7 @@ Prefab:
     - target: {fileID: 114172755823401964, guid: 9b7cb75d61ccfdf4c9adf3b1f1d6c626,
         type: 2}
       propertyPath: FIRING_INTERVAL
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1568903022283396, guid: 9b7cb75d61ccfdf4c9adf3b1f1d6c626, type: 2}
       propertyPath: m_Layer
@@ -691,6 +691,15 @@ Prefab:
         type: 2}
       propertyPath: m_Constraints
       value: 124
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568903022283396, guid: 9b7cb75d61ccfdf4c9adf3b1f1d6c626, type: 2}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 114014366584186884, guid: 9b7cb75d61ccfdf4c9adf3b1f1d6c626,
+        type: 2}
+      propertyPath: value
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b7cb75d61ccfdf4c9adf3b1f1d6c626, type: 2}
@@ -1168,6 +1177,10 @@ Prefab:
     - target: {fileID: 1792685258518656, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792685258518656, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
@@ -4560,7 +4573,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5629ac724fa47fb46b95d670e0e13810, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5629ac724fa47fb46b95d670e0e13810, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5014,6 +5027,10 @@ Prefab:
     - target: {fileID: 1616621568712904, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
       propertyPath: m_Name
       value: MoveObject (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792685258518656, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
@@ -6720,7 +6737,7 @@ MonoBehaviour:
   DownKey: 274
   LeftKey: 276
   RightKey: 275
-  JumpKey: 350
+  JumpKey: 32
   AttackKey: 274
   ItemKey: 108
   m_padNum: 1
@@ -6737,8 +6754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ceac93b44646154b8fba277840ba212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionCount: 00000000010000000200000003000000
-  collisionWallCount: 00000000010000000200000003000000
+  collisionCount: 00000000000000000000000000000000
+  collisionWallCount: 00000000000000000000000000000000
 --- !u!54 &1536280338
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7221,6 +7238,14 @@ Prefab:
     - target: {fileID: 1616621568712904, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
       propertyPath: m_Name
       value: MoveObject (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792685258518656, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616621568712904, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}

@@ -269,7 +269,7 @@ public class PlayerController : MonoBehaviour
     {
        // m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
         state = PLAYER_STATE.DAMAGED;
-        stateTime = 120.0f;
+        stateTime = 60.0f;
     }
 
     void Swoon()
@@ -468,7 +468,7 @@ public class PlayerController : MonoBehaviour
         if (nowCollision.transform.gameObject.GetComponent<PlayerController>().state == PLAYER_STATE.ATTACK &&
             (dir == DIRECTION.LEFT || dir == DIRECTION.RIGHT))
         {
-            rb.AddForce(nowCollision.contacts[0].normal * 150.0f);
+          rb.AddForce(nowCollision.contacts[0].normal * 150.0f);
             if (m_playerStatus.GetHp() >0)
             {
                 Debug.Log(m_playerStatus.GetHp());
@@ -493,13 +493,13 @@ public class PlayerController : MonoBehaviour
     void CollisionEnemy()
     {
         //衝突時の反発
-        if (Mathf.Abs(nowCollision.contacts[0].normal.y) > 0)
+        //if (Mathf.Abs(nowCollision.contacts[0].normal.y) > 0)
+        //{
+        //    rb.AddForce(nowCollision.contacts[0].normal * 50.0f);
+        //}
+       /* else*/ if (Mathf.Abs(nowCollision.contacts[0].normal.x) > 0)
         {
-            rb.AddForce(nowCollision.contacts[0].normal * 300.0f);
-        }
-        else if (Mathf.Abs(nowCollision.contacts[0].normal.x) > 0)
-        {
-            rb.AddForce(nowCollision.contacts[0].normal * 1500.0f);
+            rb.AddForce(nowCollision.contacts[0].normal * 50.0f);
         }
 
         if (m_playerStatus.GetHp() > 0)
