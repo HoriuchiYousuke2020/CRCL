@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Replaceall : Item
 {
+    public Replaceall()
+    {
+        m_itemNumber = 7;
+        m_itemName = "シャッフル";
+    }
 
     private void Start()
     {
-        m_itemNumber = 7;
+      
     }
 
     public override void UseItem(PlayerController player)
@@ -20,10 +25,15 @@ public class Replaceall : Item
 
 public class ReplaceFirstPlace : Item
 {
+  public  ReplaceFirstPlace()
+    {
+        m_itemNumber = 8;
+        m_itemName = "トップチェンジ";
+    }
 
     private void Start()
     {
-        m_itemNumber = 8;
+       
     }
 
     public override void UseItem(PlayerController player)

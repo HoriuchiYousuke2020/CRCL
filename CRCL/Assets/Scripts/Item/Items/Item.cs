@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     protected int m_itemNumber; //アイテム番号
    protected  bool[] m_scrollsFlag = new bool[(int)SCROLLS_STATE.ANY]; //巻物フラグ
     protected bool m_isUsedFlag;
+    protected string m_itemName;
     // Use this for initialization
  public  enum SCROLLS_STATE //巻物を使った時のステート
     {
@@ -26,12 +27,14 @@ public class Item : MonoBehaviour
         {
             m_scrollsFlag[i] = false;
         }
+        m_itemName = "持ち物なし";
     }
 
     private void Start()
     {
         m_itemNumber = 0;
         m_isUsedFlag = false;
+        m_itemName = "持ち物なし";
         for (int i = 0; i < (int)SCROLLS_STATE.ANY; i++)
         {
             m_scrollsFlag[i] = false;
@@ -73,4 +76,11 @@ public class Item : MonoBehaviour
     {
         m_isUsedFlag = flag;
     }
+
+    //アイテムの名前を取得
+    public string GetName()
+    {
+        return m_itemName;
+    }
+
 }

@@ -9,11 +9,16 @@ using UnityEngine;
 //速度アップアイテム
 public class SpeedUp : Item
 {
-
+    public SpeedUp()
+    {
+        m_itemName = "速度アップ";
+        m_itemNumber = 1;
+    }
     // Use this for initialization
     void Start()
     {
-        m_itemNumber = 1;
+       
+       // m_itemName = "速度アップ";
     }
 
     public override void UseItem(PlayerController player)
@@ -28,11 +33,17 @@ public class SpeedUp : Item
 //速度ダウンアイテム
 public class SpeedDown : Item
 {
+    public SpeedDown()
+    {
+        m_itemName = "速度ダウン";
+        m_itemNumber = -1;
+    }
 
-    // Use this for initialization
+     // Use this for initialization
     void Start()
     {
-        m_itemNumber = -1;
+      
+       
     }
     public override void UseItem(PlayerController player)
     {
@@ -48,10 +59,15 @@ public class SpeedDown : Item
 public class AttackUp : Item
 {
 
+    public AttackUp()
+    {
+        m_itemNumber = 2;
+        m_itemName = "攻撃アップ";
+    }
     // Use this for initialization
     void Start()
     {
-        m_itemNumber = 2;
+  
     }
 
     public override void UseItem(PlayerController player)
@@ -65,9 +81,10 @@ public class AttackUp : Item
 //攻撃力ダウンアイテム
 public class AttackDown : Item
 {
-    private void Start()
+    public AttackDown()
     {
         m_itemNumber = -2;
+        m_itemName = "攻撃ダウン";
     }
 
     public override void UseItem(PlayerController player)
@@ -82,9 +99,14 @@ public class AttackDown : Item
 //ジャンプ力アップアイテム
 public class JumpUp : Item
 {
-    private void Start()
+ public  JumpUp()
     {
         m_itemNumber = 3;
+        m_itemName = "ジャンプアップ";
+    }
+    private void Start()
+    {
+  
     }
 
     public override void UseItem(PlayerController player)
@@ -99,9 +121,14 @@ public class JumpUp : Item
 //ジャンプ力アップアイテム
 public class JumpDown : Item
 {
-    private void Start()
+    public  JumpDown()
     {
         m_itemNumber = -3;
+        m_itemName = "ジャンプダウン";
+    }
+    private void Start()
+    {
+      
     }
 
     public override void UseItem(PlayerController player)
@@ -116,9 +143,14 @@ public class JumpDown : Item
 //Hpアップ(回復)アイテム
 public class HpUp :Item
 {
-    private void Start()
+    public HpUp()
     {
         m_itemNumber = 4;
+        m_itemName = "体力アップ";
+    }
+    private void Start()
+    {
+        
     }
 
     public override void UseItem(PlayerController player)
@@ -132,9 +164,14 @@ public class HpUp :Item
 //Hpダウン(減少)アイテム
 public class HpDown : Item
 {
-    private void Start()
+    public HpDown()
     {
         m_itemNumber = -4;
+        m_itemName = "体力ダウン";
+    }
+    private void Start()
+    {
+      
     }
 
     public override void UseItem(PlayerController player)
@@ -148,9 +185,14 @@ public class HpDown : Item
 
 public class DefenceUp: Item
 {
-    private void Start()
+    public DefenceUp()
     {
         m_itemNumber = 5;
+        m_itemName = "防御アップ";
+    }
+    private void Start()
+    {
+      
     }
 
     public override void UseItem(PlayerController player)
@@ -164,9 +206,14 @@ public class DefenceUp: Item
 
 public class DefenceDown : Item
 {
-    private void Start()
+    public DefenceDown()
     {
         m_itemNumber = -5;
+        m_itemName = "防御ダウン";
+    }
+    private void Start()
+    {
+   
     }
 
     public override void UseItem(PlayerController player)
@@ -179,10 +226,12 @@ public class DefenceDown : Item
 
 public class ScoreUp : Item
 {
-    private void Start()
+    public ScoreUp()
     {
         m_itemNumber = 6;
+        m_itemName = "得点2倍";
     }
+
 
     public override void UseItem(PlayerController player)
     {
@@ -196,9 +245,14 @@ public class ScoreUp : Item
 //スコアを半分に
 public class ScoreDown : Item
 {
+    public ScoreDown()
+    {
+
+        m_itemNumber = -6;
+        m_itemName = "得点半減";
+    }
     private void Start()
     {
-        m_itemNumber = -6;
     }
 
     public override void UseItem(PlayerController player)
