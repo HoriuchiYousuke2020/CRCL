@@ -1789,6 +1789,16 @@ Prefab:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 54417940271154478, guid: f384718f8d8bf064aa2e657a466f52d2,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711649467505752, guid: f384718f8d8bf064aa2e657a466f52d2,
+        type: 2}
+      propertyPath: startSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
   m_IsPrefabAsset: 0
