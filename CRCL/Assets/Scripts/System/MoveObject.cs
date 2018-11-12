@@ -10,21 +10,23 @@ public class MoveObject : MonoBehaviour
     [SerializeField]
     private bool state = true;
     private float speed;
+    private Rigidbody rb;
 	// Use this for initialization
 	void Start ()
     {
         speed = startSpeed;
+        rb = GetComponent<Rigidbody>();
     }
     
     // Update is called once per frame
     void Update ()
     {
         Vector3 pos = this.transform.position;
-        
-        switch(state)
+
+        switch (state)
         {
-            case true:  pos.y += speed;  break;
-            case false: pos.x += speed;  break;
+            case true: pos.y += speed; break;
+            case false: pos.x += speed; break;
         }
 
         this.transform.position = pos;
@@ -36,5 +38,16 @@ public class MoveObject : MonoBehaviour
         {
             speed = -speed;
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Player")
+            collision.gameObject.transform.SetParent(this.transform);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.tag == "Player")
+            collision.gameObject.transform.SetParent(null);
     }
 }
