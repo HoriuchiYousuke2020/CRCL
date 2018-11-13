@@ -50,6 +50,12 @@ public class PlayerController : MonoBehaviour
     DIRECTION dir;
 
     GamepadState keyState;
+    //一つ前の速度
+    Vector3 m_currentVec;
+    //一つ前のポジション
+    Vector3 m_currentPos;
+
+    const float haba = 1.5f;
     // Use this for initialization
     void Start()
     {
@@ -69,13 +75,16 @@ public class PlayerController : MonoBehaviour
         m_item = gameObject.AddComponent<Item>();
         m_nowItemNumber = 0;
         m_outFlag = false;
-       
+
+        m_currentVec = new Vector3(0, 0, 0);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        m_currentVec = rb.velocity;
+        m_currentPos = transform.position;
         keyState = GamePad.GetState(m_padNum, false);
         if (m_outFlag == true)
         {
@@ -282,7 +291,17 @@ public class PlayerController : MonoBehaviour
     void Pressed()
     {
         Vector3 pos = Camera.main.transform.position;
-        this.transform.position = new Vector3(pos.x, pos.y, 0);
+        //リスポーン地点を左右randomに分ける
+        int rand = Random.Range(0, 2);
+        if(rand == 0)
+        {
+            this.transform.position = new Vector3(pos.x - haba, pos.y, 0);
+        }
+        else
+        {
+            this.transform.position = new Vector3(pos.x + haba, pos.y, 0);
+        }
+        this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         rb.velocity = Vector3.zero;
         col.SetIsPress(false);
         ColorChangeA(0.5f);
@@ -294,6 +313,21 @@ public class PlayerController : MonoBehaviour
     {
         if (c.transform.tag == "Item") return;
         nowCollision = c;
+    }
+
+    void OnCollisionExit(Collision c)
+    {
+        if (c.transform.tag == "Player")
+        {
+            //float a,b;
+            //a = m_currentPos.magnitude - transform.position.magnitude;
+            //b = rb.velocity.magnitude;
+            //if (a < -2.0f && (Input.GetKey(KeyCode.Space) == false ) && b < 0)
+            //{
+            //    rb.velocity = new Vector3(0,0,0);
+            //}
+         
+        }
     }
 
     void GetLRKeyState()
