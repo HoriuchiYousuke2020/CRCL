@@ -67,7 +67,22 @@ public class CheckPlayers : MonoBehaviour
         var ary = Enumerable.Range(0, m_players.Length).OrderBy(n => Guid.NewGuid()).Take(m_players.Length).ToArray();
         for (int i = 0; i < m_players.Length; i++)
         {
-            m_players[i].transform.position = m_stockPos[ary[i]];
+            if (ary[i] != i || i != m_players.Length)
+            {
+                m_players[i].transform.position = m_stockPos[ary[i]];
+            }
+            else
+            {
+                var tmp = ary[i];
+                ary[i] = ary[i + 1];
+                ary[i + 1] = tmp;
+                m_players[i].transform.position = m_stockPos[ary[i]];
+            }
+
+        
+
+
+
         }
     }
 
