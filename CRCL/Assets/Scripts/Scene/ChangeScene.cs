@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using GamepadInput;
 public class ChangeScene : MonoBehaviour {
     public string m_sceneName;
-	// Use this for initialization
-	void Start ()
+    private GamePad.Index m_padNum;
+    GamepadState keyState;
+    // Use this for initialization
+    void Start ()
     {
 		
 	}
@@ -13,7 +16,8 @@ public class ChangeScene : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.GetKeyDown(KeyCode.Space))
+        keyState = GamePad.GetState(m_padNum, false);
+        if (Input.GetKeyDown(KeyCode.Space)|| GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any))
         {
             SceneManager.LoadScene(m_sceneName);
         }
