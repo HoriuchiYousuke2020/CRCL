@@ -311,7 +311,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-        if (c.transform.tag == "Item") return;
+        if (c.transform.tag == "Item"|| c.transform.tag == "Coin") return;
         nowCollision = c;
     }
 
@@ -502,7 +502,7 @@ public class PlayerController : MonoBehaviour
         if (nowCollision.transform.gameObject.GetComponent<PlayerController>().state == PLAYER_STATE.ATTACK &&
             (dir == DIRECTION.LEFT || dir == DIRECTION.RIGHT))
         {
-          rb.AddForce(nowCollision.contacts[0].normal * 150.0f);
+          rb.AddForce(nowCollision.contacts[0].normal * 800.0f);
             if (m_playerStatus.GetHp() >0)
             {
                 Debug.Log(m_playerStatus.GetHp());
