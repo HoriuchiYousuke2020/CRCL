@@ -24,7 +24,8 @@ public class MoveStageObject : MonoBehaviour
         if (STATE)
         {
             if (collision.transform.tag == "Player")
-                collision.gameObject.transform.SetParent(this.transform);
+                if (transform.position.y < collision.transform.position.y)
+                    collision.gameObject.transform.SetParent(this.transform);
         }
     }
 
@@ -33,7 +34,7 @@ public class MoveStageObject : MonoBehaviour
         if (STATE)
         {
             if (collision.transform.tag == "Player")
-                collision.gameObject.transform.SetParent(null);
+                    collision.gameObject.transform.SetParent(null);
         }
     }
 }
