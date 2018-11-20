@@ -39,15 +39,4 @@ public class MoveObject : MonoBehaviour
             speed = -speed;
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Player")
-            collision.gameObject.transform.SetParent(this.transform);
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.tag == "Player")
-            collision.gameObject.transform.SetParent(null);
-    }
 }

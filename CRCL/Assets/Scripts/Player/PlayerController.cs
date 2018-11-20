@@ -274,7 +274,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Damaged()
+    public void Damaged()
     {
        // m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
         state = PLAYER_STATE.DAMAGED;

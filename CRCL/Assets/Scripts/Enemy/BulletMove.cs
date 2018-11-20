@@ -13,7 +13,10 @@ namespace Makoto
 
         [SerializeField]
         [Range(1.0f, 100.0f)]
-        private float RANGE = 10.0f; 
+        private float RANGE = 10.0f;
+
+        [SerializeField]
+        private bool DAMAGE = false;
 
         // 状態
         private bool state;
@@ -47,6 +50,10 @@ namespace Makoto
         {
             if(other.tag == "Player")
             {
+                if(DAMAGE)
+                {
+                    other.GetComponent<PlayerController>().Damaged();
+                }
                 Destroy(transform.gameObject);
             }
         }
