@@ -8,7 +8,7 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour {
 
     [SerializeField]
-     const int MAX_ITEM_NUM = 8;
+     const int MAX_ITEM_NUM = 9;
     enum ItemType
     {
         IDENTITY,
