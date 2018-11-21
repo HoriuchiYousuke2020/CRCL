@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CoinCtrl : MonoBehaviour
 {
+    GameObject scoreBank;
     [SerializeField]
     private int addScore = 100;
 	// Use this for initialization
 	void Start () {
-		
+        scoreBank = GameObject.Find("ScoreBank");
 	}
 	
 	// Update is called once per frame
@@ -20,6 +21,7 @@ public class CoinCtrl : MonoBehaviour
     {
         if (c.transform.tag == "Player")
         {
+            scoreBank.GetComponent<ScoreBank>().AddScore(addScore);
             c.transform.GetComponent<PlayerController>().GetScore().AddScore(addScore);
             Destroy(this.gameObject);
         }
