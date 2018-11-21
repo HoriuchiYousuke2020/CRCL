@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public Score m_score;          //スコア
     bool m_downFlag;
     bool m_outFlag;
+    bool m_disFlag;
     //操作キー
     public KeyCode UpKey;
     public KeyCode DownKey;
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
 
         m_currentVec = new Vector3(0, 0, 0);
         m_downFlag = false;
+        m_disFlag = false;
     }
 
     // Update is called once per frame
@@ -141,7 +143,7 @@ public class PlayerController : MonoBehaviour
 
 
         rb.velocity = new Vector3(rb.velocity.x * friction, rb.velocity.y - gravity * Time.deltaTime, 0);
-
+      
     }
 
     //通常状態の処理
@@ -250,8 +252,10 @@ public class PlayerController : MonoBehaviour
 
     void UpdateStateGoal()
     {
-        m_score.AddScore(1000);
-        SceneManager.LoadScene("ResultScene");
+        m_disFlag = true;
+        // SceneManager.LoadScene("ResultScene");
+        state = PLAYER_STATE.GOALED;
+       
     }
 
     void Jump()
@@ -413,7 +417,7 @@ public class PlayerController : MonoBehaviour
         MAX
     }
 
-    enum PLAYER_STATE
+   public enum PLAYER_STATE
     {
         NORMAL,
         ATTACK,
@@ -422,6 +426,7 @@ public class PlayerController : MonoBehaviour
         SWOON,
         PRESSED,
         GOAL,
+        GOALED,
         MAX
     }
 
@@ -583,5 +588,10 @@ public class PlayerController : MonoBehaviour
         Color col = this.GetComponent<Renderer>().material.color;
         col.a = 1;
         return col;
+    }
+
+     public int GetState()
+    {
+        return (int)state;
     }
 }

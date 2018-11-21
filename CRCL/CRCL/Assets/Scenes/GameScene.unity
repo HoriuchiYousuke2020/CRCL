@@ -6628,22 +6628,22 @@ Prefab:
     - target: {fileID: 114106817703601052, guid: cd4dbafd367fc9646a4567b9bbedae0e,
         type: 2}
       propertyPath: LeftKey
-      value: 44
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 114106817703601052, guid: cd4dbafd367fc9646a4567b9bbedae0e,
         type: 2}
       propertyPath: RightKey
-      value: 45
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114106817703601052, guid: cd4dbafd367fc9646a4567b9bbedae0e,
         type: 2}
       propertyPath: JumpKey
-      value: 48
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 114106817703601052, guid: cd4dbafd367fc9646a4567b9bbedae0e,
         type: 2}
       propertyPath: AttackKey
-      value: 48
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 114106817703601052, guid: cd4dbafd367fc9646a4567b9bbedae0e,
         type: 2}
