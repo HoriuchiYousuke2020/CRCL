@@ -215,7 +215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e272b0a6913317046a1a07f7b283bd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPos: {x: 0, y: 0, z: -15}
   player:
   - {fileID: 0}
   - {fileID: 0}
@@ -372,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60bac853716d4b44b42efe4f3e09c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sceneName: GameScene
+  m_sceneName: StartScene
 --- !u!4 &483111430
 Transform:
   m_ObjectHideFlags: 0
