@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         m_outFlag = false;
 
         m_currentVec = new Vector3(0, 0, 0);
-
+        m_downFlag = false;
     }
 
     // Update is called once per frame
@@ -190,8 +190,10 @@ public class PlayerController : MonoBehaviour
     void UpdateStateSwoon()
     {
         stateTime -= 60.0f * Time.deltaTime;
+      
         if (stateTime <= 0)
         {
+            m_downFlag = true;
             state = PLAYER_STATE.NORMAL;
             ColorChangeA(1.0f);
             m_playerStatus.SetHp(3);
@@ -201,9 +203,11 @@ public class PlayerController : MonoBehaviour
     //壁に挟まれた状態の処理
     void UpdateStatePressed()
     {
+      
         stateTime -= 60.0f * Time.deltaTime;
         if (stateTime <= 0)
         {
+            m_downFlag = true;
             state = PLAYER_STATE.NORMAL;
             ColorChangeA(1.0f);
             m_playerStatus.SetHp(3);
