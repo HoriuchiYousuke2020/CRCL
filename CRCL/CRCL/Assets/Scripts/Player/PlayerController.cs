@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
         {
             case "Player": CollisionPlayer(); break;
             case "Enemy": CollisionEnemy(); break;
-            case "Goal": CollisionGoal(); break;
+            //case "Goal": CollisionGoal(); break;
             case "Item": break;
             default: break;
         }
@@ -327,6 +327,14 @@ public class PlayerController : MonoBehaviour
             //    rb.velocity = new Vector3(0,0,0);
             //}
          
+        }
+    }
+
+    void OnTriggerEnter(Collider c)
+    {
+        if(c.transform.tag == "Goal")
+        {
+            CollisionGoal();
         }
     }
 
