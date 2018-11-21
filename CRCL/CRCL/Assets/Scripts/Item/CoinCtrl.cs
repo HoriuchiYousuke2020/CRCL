@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinCtrl : MonoBehaviour {
-
+public class CoinCtrl : MonoBehaviour
+{
+    [SerializeField]
+    private int addScore = 100;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,7 +20,7 @@ public class CoinCtrl : MonoBehaviour {
     {
         if (c.transform.tag == "Player")
         {
-            c.transform.GetComponent<PlayerController>().GetScore().AddScore(100);
+            c.transform.GetComponent<PlayerController>().GetScore().AddScore(addScore);
             Destroy(this.gameObject);
         }
     }

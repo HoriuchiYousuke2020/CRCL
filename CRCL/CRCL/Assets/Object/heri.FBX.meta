@@ -78,7 +78,12 @@ ModelImporter:
     4300026: Box015
     7400000: Take 001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: ef905f5cd7e57464280b3ecfb1d64f9a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -110,7 +115,7 @@ ModelImporter:
       name: Take 001
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 7
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
