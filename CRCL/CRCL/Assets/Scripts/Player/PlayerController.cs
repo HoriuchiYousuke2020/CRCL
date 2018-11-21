@@ -566,4 +566,10 @@ public class PlayerController : MonoBehaviour
         m_outFlag = true;
     }
 
+    public Color GetColor()
+    {
+        Color col = this.GetComponent<Renderer>().material.color;
+        col.a = 1;
+        return col;
+    }
 }
