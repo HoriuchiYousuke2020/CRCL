@@ -35,4 +35,14 @@ public class ScoreBank : MonoBehaviour {
             
         }
 	}
+
+    public Score GetScore()
+    {
+        return m_scoreBank;
+    }
+
+    public void AddScore(int addnum)
+    {
+        m_scoreBank.AddScore(addnum);
+    }
 }
