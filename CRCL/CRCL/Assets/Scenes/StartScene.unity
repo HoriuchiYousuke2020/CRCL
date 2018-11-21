@@ -2038,7 +2038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountDownText: {fileID: 1518601452}
-  CountDownTime: 3
+  CountDownTime: 1
 --- !u!4 &354048026
 Transform:
   m_ObjectHideFlags: 0
