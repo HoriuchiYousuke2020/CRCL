@@ -16,7 +16,7 @@ public class ScoreBank : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        goalCount = 0;
+        goalCount = 1;
         count = 0;
         m_scoreBank.SetScore(0);
 	}
@@ -37,24 +37,16 @@ public class ScoreBank : MonoBehaviour {
             
             if(m_players[i].GetState() == (int)PlayerController.PLAYER_STATE.GOAL)
             {
+                m_players[i].GetRank().DetermineRANK(goalCount);
                 //int num;
-                //switch(goalCount)
-                //{
-
-                //    default:break;
-                //    case 0:num = (int)(m_scoreBank.GetScore() * 0.4); m_players[i].GetScore().AddScore(num); m_scoreBank.SubScore(num) ; break;
-                //    case 1: num = (int)(m_scoreBank.GetScore() * 0.3); m_players[i].GetScore().AddScore(num); m_scoreBank.SubScore(num); break;
-                //    case 2: num = (int)(m_scoreBank.GetScore() * 0.2); m_players[i].GetScore().AddScore(num); m_scoreBank.SubScore(num); break;
-                //    case 3: num = (int)(m_scoreBank.GetScore() * 0.1); m_players[i].GetScore().AddScore(num); m_scoreBank.SubScore(num); break;
-
-                //}
+               
                 goalCount++;
                
             }
            
         }
 
-        if (goalCount > 0)
+        if (goalCount > 1)
         {
             count++;
         }
