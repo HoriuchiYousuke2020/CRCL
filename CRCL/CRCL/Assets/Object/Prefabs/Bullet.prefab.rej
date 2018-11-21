@@ -1,0 +1,10 @@
+diff a/CRCL/CRCL/Assets/Object/Prefabs/Bullet.prefab b/CRCL/CRCL/Assets/Object/Prefabs/Bullet.prefab	(rejected hunks)
+@@ -110,7 +110,7 @@
+   m_Name: 
+   m_EditorClassIdentifier: 
+   SPEED: 0.2
+-  RANGE: 50
++  RANGE: 25
+   DAMAGE: 1
+ --- !u!135 &135864659895950986
+ SphereCollider:

@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SPEED: 0.2
-  RANGE: 25
+  RANGE: 50
   DAMAGE: 1
 --- !u!135 &135864659895950986
 SphereCollider:
