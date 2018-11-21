@@ -360,6 +360,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 1572519204}
+--- !u!102 &25249391 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
+    type: 2}
+  m_PrefabInternal: {fileID: 2069425155}
 --- !u!1001 &32295377
 Prefab:
   m_ObjectHideFlags: 0
@@ -1227,7 +1232,7 @@ Prefab:
     - target: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
         type: 2}
       propertyPath: m_Color.rgba
-      value: 1073741824
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114646465313929628, guid: c8c135be991b9ca4a945072d4631c586, type: 2}
@@ -2392,6 +2397,7 @@ GameObject:
   - component: {fileID: 282840811}
   - component: {fileID: 282840812}
   - component: {fileID: 282840815}
+  - component: {fileID: 282840816}
   m_Layer: 14
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2492,6 +2498,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1594969940182196, guid: 2c95e97f5f9b0c54a9c9bdff26b1fdea, type: 2}
+--- !u!114 &282840816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282840810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034ef6bb646203a47a3670c08a259ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 282840813}
+  Player:
+  - {fileID: 1536280334}
+  - {fileID: 529080784}
+  - {fileID: 1394774222}
+  - {fileID: 631053193}
+  Score:
+  - {fileID: 647192619}
+  - {fileID: 1297498018}
+  Item:
+  - {fileID: 25249391}
+  - {fileID: 1140836321}
+  Alpha: 128
 --- !u!4 &286523392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3,
@@ -2785,7 +2815,7 @@ Prefab:
     - target: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
         type: 2}
       propertyPath: m_Color.rgba
-      value: 1074519513
+      value: 4278967769
       objectReference: {fileID: 0}
     - target: {fileID: 1605133884333218, guid: c8c135be991b9ca4a945072d4631c586, type: 2}
       propertyPath: m_Layer
@@ -4254,7 +4284,7 @@ Prefab:
     - target: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
         type: 2}
       propertyPath: m_Color.rgba
-      value: 1075118335
+      value: 4279566591
       objectReference: {fileID: 0}
     - target: {fileID: 1605133884333218, guid: c8c135be991b9ca4a945072d4631c586, type: 2}
       propertyPath: m_Layer
@@ -4749,6 +4779,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3,
     type: 2}
   m_PrefabInternal: {fileID: 1051915590}
+--- !u!102 &647192619 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
+    type: 2}
+  m_PrefabInternal: {fileID: 667116539}
 --- !u!4 &658516831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3,
@@ -4806,7 +4841,7 @@ Prefab:
     - target: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
         type: 2}
       propertyPath: m_Color.rgba
-      value: 1078320395
+      value: 4282768651
       objectReference: {fileID: 0}
     - target: {fileID: 1605133884333218, guid: c8c135be991b9ca4a945072d4631c586, type: 2}
       propertyPath: m_Layer
@@ -7558,7 +7593,7 @@ Prefab:
     - target: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
         type: 2}
       propertyPath: m_Color.rgba
-      value: 1090459904
+      value: 4294908160
       objectReference: {fileID: 0}
     - target: {fileID: 1605133884333218, guid: c8c135be991b9ca4a945072d4631c586, type: 2}
       propertyPath: m_Layer
@@ -8066,6 +8101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 737935017}
+--- !u!102 &1140836321 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
+    type: 2}
+  m_PrefabInternal: {fileID: 134627541}
 --- !u!1001 &1149021771
 Prefab:
   m_ObjectHideFlags: 0
@@ -8296,7 +8336,7 @@ Prefab:
     - target: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
         type: 2}
       propertyPath: m_Color.rgba
-      value: 1073741824
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114646465313929628, guid: c8c135be991b9ca4a945072d4631c586, type: 2}
@@ -9387,6 +9427,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f384718f8d8bf064aa2e657a466f52d2, type: 2}
   m_IsPrefabAsset: 0
+--- !u!102 &1297498018 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
+    type: 2}
+  m_PrefabInternal: {fileID: 300801502}
 --- !u!4 &1298389082 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4787773479273238, guid: e875487c0763d1a479264bcbedbbebb3,
@@ -11013,7 +11058,7 @@ Prefab:
     - target: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
         type: 2}
       propertyPath: m_Color.rgba
-      value: 1073741824
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114646465313929628, guid: c8c135be991b9ca4a945072d4631c586, type: 2}
@@ -13817,7 +13862,7 @@ Prefab:
     - target: {fileID: 102088774962358138, guid: c8c135be991b9ca4a945072d4631c586,
         type: 2}
       propertyPath: m_Color.rgba
-      value: 1073741824
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114646465313929628, guid: c8c135be991b9ca4a945072d4631c586, type: 2}
