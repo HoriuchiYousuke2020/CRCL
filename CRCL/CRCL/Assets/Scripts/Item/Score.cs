@@ -15,7 +15,7 @@ public class Score : ScriptableObject {
 	// Use this for initialization
 	void Start ()
     {
-        m_score = 0;
+       // m_score = 0;
         SaveScore(m_score);
 
     }
@@ -67,9 +67,13 @@ public class Score : ScriptableObject {
 
     public void SubScore(int subNum)     //スコアを減算する  
     {
-        if(m_score > 0)
+        if(m_score > 50)
         {
             m_score -= subNum;
+        }
+        else
+        {
+            m_score = 0;
         }
     
     }
@@ -85,5 +89,10 @@ public class Score : ScriptableObject {
         {
             m_score /= dibNum;
         }
+    }
+
+    public void Reset()
+    {
+        m_score = 0;
     }
 }

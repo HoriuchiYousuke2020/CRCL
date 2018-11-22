@@ -28,7 +28,7 @@ public class ScoreBank : MonoBehaviour
     {
         goalCount = 1;
         count = 0;
-        m_scoreBank.SetScore(0);
+        //m_scoreBank.SetScore(0);
 	}
 	
 	// Update is called once per frame

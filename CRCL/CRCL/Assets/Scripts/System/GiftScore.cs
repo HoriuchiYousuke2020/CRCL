@@ -6,13 +6,14 @@ public class GiftScore : MonoBehaviour {
     public Score[] m_players;
     public Rank[] m_playerRanks; //ゲームに参加しているプレイヤー達    
     public Score m_scoreBank;    //プレイヤー達が失ったスコアをためておく変数
-                                         // Use this for initialization
+    int total;                   // Use this for initialization
     void Start ()
     {
+        total = 0;
         for (int i = 0; i < m_players.Length; i++)
         {
             int num;
-            int total = 0;
+           
             switch (m_playerRanks[i].GetRank())
             {
               

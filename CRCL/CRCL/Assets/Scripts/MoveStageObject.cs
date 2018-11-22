@@ -39,9 +39,11 @@ public class MoveStageObject : MonoBehaviour
         {
             if (collision.transform.tag == "Player")
             {
-                //collision.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+             
                 collision.gameObject.transform.SetParent(null);
+          
                 collision.gameObject.transform.parent = GameObject.Find("Player").transform;
+                collision.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
     }
