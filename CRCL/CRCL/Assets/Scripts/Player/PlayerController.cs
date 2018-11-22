@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Item m_item;           //アイテム
     private int m_nowItemNumber;   //現在のアイテム番号
     public Score m_score;          //スコア
+    public Rank m_rank;         //ランク
     bool m_downFlag;
     bool m_outFlag;
     //操作キー
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
         col = gameObject.GetComponent<CollisionCount>();
 
         m_score.SetScore(0);
-
+        m_rank.DetermineRANK(m_rank.GetLowest());
         m_playerStatus = new Status();
         SetStatus();
         m_item = gameObject.AddComponent<Item>();
@@ -462,6 +463,11 @@ public class PlayerController : MonoBehaviour
     public Score GetScore()    //スコアを取得する
     {
         return m_score;
+    }
+
+    public Rank GetRank()
+    {
+        return m_rank;
     }
 
     public bool GetDownFlag()   //ダウンフラグを取得
