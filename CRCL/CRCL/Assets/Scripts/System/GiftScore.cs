@@ -5,19 +5,19 @@ using UnityEngine;
 public class GiftScore : MonoBehaviour {
     public Score[] m_players;
     public Rank[] m_playerRanks; //ゲームに参加しているプレイヤー達    
-    public Score m_scoreBank;            //プレイヤー達が失ったスコアをためておく変数
+    public Score m_scoreBank;    //プレイヤー達が失ったスコアをためておく変数
                                          // Use this for initialization
     void Start ()
     {
         for (int i = 0; i < m_players.Length; i++)
         {
-              int num;
+            int num;
             int total = 0;
             switch (m_playerRanks[i].GetRank())
             {
               
                 default: break;
-                case 1: num = (int)(m_scoreBank.GetScore() * 0.4);total += num; m_players[i].AddScore(num);  break;
+                case 1: num = (int)(m_scoreBank.GetScore() * 0.4); total += num; m_players[i].AddScore(num);  break;
                 case 2: num = (int)(m_scoreBank.GetScore() * 0.3); total += num; m_players[i].AddScore(num);  break;
                 case 3: num = (int)(m_scoreBank.GetScore() * 0.2); total += num; m_players[i].AddScore(num);  break;
                 case 4: num = (int)(m_scoreBank.GetScore() * 0.1); total += num; m_players[i].AddScore(num);  break;

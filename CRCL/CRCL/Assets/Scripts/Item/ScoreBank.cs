@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ScoreBank : MonoBehaviour {
+public class ScoreBank : MonoBehaviour
+{
     public int m_subScore;               //減点ポイント
     public PlayerController[] m_players; //ゲームに参加しているプレイヤー達    
     public Score m_scoreBank;            //プレイヤー達が失ったスコアをためておく変数
