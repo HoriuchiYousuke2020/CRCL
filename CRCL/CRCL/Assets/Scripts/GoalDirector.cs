@@ -10,7 +10,7 @@ namespace Makoto
         private Material[] MATERIAL = new Material[4];
 
         [SerializeField]
-        private GameObject[] HELICOPTER = new GameObject[3];
+        private GameObject[] HELICOPTER = new GameObject[4];
 
         public List<PlayerController> player;
 

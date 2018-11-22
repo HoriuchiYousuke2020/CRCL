@@ -69,7 +69,7 @@ public class ScoreBank : MonoBehaviour
                 HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight");
             }
         }
-        else if (count > RESULT_SCENE_COUNT + 60)
+        else if (count > RESULT_SCENE_COUNT + 120)
         {
             SceneManager.LoadScene("ResultScene");
         }
