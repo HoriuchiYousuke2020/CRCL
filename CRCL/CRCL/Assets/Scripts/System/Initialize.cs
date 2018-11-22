@@ -5,6 +5,7 @@ using UnityEngine;
 public class Initialize : MonoBehaviour {
 
     public Score[] score;
+    public Round round;
 	// Use this for initialization
 	void Start ()
     {
@@ -12,6 +13,7 @@ public class Initialize : MonoBehaviour {
         {
             score[i].SetScore(0);
         }
+        round.Reset();
 	}
 	
 	// Update is called once per frame

@@ -15,7 +15,7 @@ public class ScoreBank : MonoBehaviour
     public Score m_scoreBank;            //プレイヤー達が失ったスコアをためておく変数
     private int goalCount;
     private int count;
-
+    public Round round;
     [SerializeField]
     private int RESULT_SCENE_COUNT = 600;
 
@@ -71,6 +71,7 @@ public class ScoreBank : MonoBehaviour
         }
         else if (count > RESULT_SCENE_COUNT + 120)
         {
+            round.AddCount();
             SceneManager.LoadScene("ResultScene");
         }
     }
