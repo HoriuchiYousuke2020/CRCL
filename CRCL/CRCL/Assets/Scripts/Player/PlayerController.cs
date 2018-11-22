@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
         get { return m_playerNumber; }
     }
 
+    [SerializeField]
+    private Makoto.GoalDirector GoalDirector;
+
     //キー入力状態保存用
     private int leftKeyState;
     private int rightKeyState;
@@ -257,8 +260,10 @@ public class PlayerController : MonoBehaviour
 
     void UpdateStateGoal()
     {
-        m_score.AddScore(1000);
-        SceneManager.LoadScene("ResultScene");
+        playerState = PLAYER_STATE.GOALED;
+        GoalDirector.player.Add(this);
+       // m_score.AddScore(1000);
+       // SceneManager.LoadScene("ResultScene");
     }
 
     void Jump()
@@ -345,7 +350,11 @@ public class PlayerController : MonoBehaviour
     {
         if(c.transform.tag == "Goal")
         {
-            CollisionGoal();
+            if(playerState != PLAYER_STATE.GOALED)
+            {
+                CollisionGoal();
+            }
+         
         }
     }
 
@@ -429,6 +438,7 @@ public class PlayerController : MonoBehaviour
         SWOON,
         PRESSED,
         GOAL,
+        GOALED,
         MAX
     }
 
