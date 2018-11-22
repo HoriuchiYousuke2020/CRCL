@@ -86,6 +86,8 @@ public class PlayerController : MonoBehaviour
         m_nowItemNumber = 0;
         m_outFlag = false;
 
+        m_currentPos = transform.position;
+
         m_currentVec = new Vector3(0, 0, 0);
         m_downFlag = false;
     }
@@ -94,9 +96,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         m_currentVec = rb.velocity;
-        m_currentPos = transform.position;
+       
         keyState = GamePad.GetState(m_padNum, false);
-        if (m_outFlag == true)
+        if (m_outFlag == true && gameObject.layer != 1)
         {
             Vector3 pos = Camera.main.transform.position;
             this.transform.position = new Vector3(pos.x, pos.y, 0);
@@ -123,6 +125,12 @@ public class PlayerController : MonoBehaviour
             default:
                 Debug.Log(gameObject.name + "の状態が不正です");
                 break;
+        }
+
+        if(playerState == PLAYER_STATE.GOALED)
+        {
+            this.transform.position = m_currentPos;
+            this.transform.GetComponent<Rigidbody>().useGravity = false;
         }
 
         //衝突判定
@@ -260,7 +268,11 @@ public class PlayerController : MonoBehaviour
 
     void UpdateStateGoal()
     {
+        m_currentPos = transform.position;
         playerState = PLAYER_STATE.GOALED;
+        ColorChangeA(0.0f);
+        gameObject.layer = 1;
+        
         GoalDirector.player.Add(this);
        // m_score.AddScore(1000);
        // SceneManager.LoadScene("ResultScene");
@@ -306,23 +318,27 @@ public class PlayerController : MonoBehaviour
 
     void Pressed()
     {
-        Vector3 pos = Camera.main.transform.position;
-        //リスポーン地点を左右randomに分ける
-        int rand = Random.Range(0, 2);
-        if(rand == 0)
+        if (this.gameObject.layer != 1)
         {
-            this.transform.position = new Vector3(pos.x - haba, pos.y, 0);
+            Vector3 pos = Camera.main.transform.position;
+            //リスポーン地点を左右randomに分ける
+            int rand = Random.Range(0, 2);
+            if (rand == 0)
+            {
+                this.transform.position = new Vector3(pos.x - haba, pos.y, 0);
+            }
+            else
+            {
+                this.transform.position = new Vector3(pos.x + haba, pos.y, 0);
+            }
         }
-        else
-        {
-            this.transform.position = new Vector3(pos.x + haba, pos.y, 0);
-        }
-        this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        rb.velocity = Vector3.zero;
-        col.SetIsPress(false);
-        ColorChangeA(0.5f);
-        playerState = PLAYER_STATE.PRESSED;
-        stateTime = 120.0f;
+            this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            rb.velocity = Vector3.zero;
+            col.SetIsPress(false);
+            ColorChangeA(0.5f);
+            playerState = PLAYER_STATE.PRESSED;
+            stateTime = 120.0f;
+        
     }
 
     void OnCollisionEnter(Collision c)
@@ -558,7 +574,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Enemy衝突時の処理
     /// </summary>
-    void CollisionEnemy()
+public    void CollisionEnemy()
     {
         if (Mathf.Abs(nowCollision.contacts[0].normal.x) > 0)
         {

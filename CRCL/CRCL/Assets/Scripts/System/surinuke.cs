@@ -7,7 +7,7 @@ public class surinuke : MonoBehaviour {
     private GameObject parent;
 	// Use this for initialization
 	void Start () {
-        parent = transform.parent.gameObject;
+      //  parent = transform.parent.gameObject;
     }
 	
 	// Update is called once per frame

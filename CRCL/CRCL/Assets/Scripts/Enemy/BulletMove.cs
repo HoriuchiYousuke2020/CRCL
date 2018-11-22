@@ -52,7 +52,7 @@ namespace Makoto
             {
                 if(DAMAGE)
                 {
-                    other.GetComponent<PlayerController>().Damaged();
+                    other.GetComponent<PlayerController>().CollisionEnemy();
                 }
                 Destroy(transform.gameObject);
             }
