@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreBank : MonoBehaviour {
     public int m_subScore;               //減点ポイント
@@ -36,7 +37,7 @@ public class ScoreBank : MonoBehaviour {
             }
             
 
-            if(m_players[i].GetState() == (int)PlayerController.PLAYER_STATE.GOAL)
+            if(m_players[i].GetState() == PlayerController.PLAYER_STATE.GOAL)
             {
                 m_players[i].GetRank().DetermineRANK(goalCount);
                 //int num;
