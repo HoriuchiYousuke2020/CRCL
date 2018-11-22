@@ -15,8 +15,16 @@ public class ScoreBank : MonoBehaviour
     public Score m_scoreBank;            //プレイヤー達が失ったスコアをためておく変数
     private int goalCount;
     private int count;
-	// Use this for initialization
-	void Start ()
+
+    [SerializeField]
+    private int RESULT_SCENE_COUNT = 600;
+
+    [SerializeField]
+    private GameObject[] HELICOPTER = new GameObject[3];
+
+
+    // Use this for initialization
+    void Start ()
     {
         goalCount = 1;
         count = 0;
@@ -54,13 +62,18 @@ public class ScoreBank : MonoBehaviour
             count++;
         }
 
-        if (count > 600)
+        if (count == RESULT_SCENE_COUNT)
         {
-            count = 0;
-            SceneManager.LoadScene("ResultScene");
-            
+            for (int i = 0; i < 3; i++)
+            {
+                HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight");
+            }
         }
-	}
+        else if (count > RESULT_SCENE_COUNT + 60)
+        {
+            SceneManager.LoadScene("ResultScene");
+        }
+    }
 
     public Score GetScore()
     {

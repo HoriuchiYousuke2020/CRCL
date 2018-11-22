@@ -959,6 +959,11 @@ MonoBehaviour:
   - {fileID: 1572519204}
   - {fileID: 737935017}
   m_scoreBank: {fileID: 11400000, guid: 1155a53b8055411419c3ea6634ccf6d4, type: 2}
+  RESULT_SCENE_COUNT: 600
+  HELICOPTER:
+  - {fileID: 350814270}
+  - {fileID: 1136048806}
+  - {fileID: 1037517110}
 --- !u!4 &109548533
 Transform:
   m_ObjectHideFlags: 0
@@ -1928,6 +1933,10 @@ Prefab:
     - target: {fileID: 100028, guid: c96b4363d63c4744bb6e695492e49119, type: 3}
       propertyPath: m_Name
       value: heri (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: c96b4363d63c4744bb6e695492e49119, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c96b4363d63c4744bb6e695492e49119, type: 3}
@@ -3301,6 +3310,10 @@ Prefab:
     - target: {fileID: 100028, guid: c96b4363d63c4744bb6e695492e49119, type: 3}
       propertyPath: m_Name
       value: heri (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: c96b4363d63c4744bb6e695492e49119, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c96b4363d63c4744bb6e695492e49119, type: 3}
@@ -6689,6 +6702,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ef905f5cd7e57464280b3ecfb1d64f9a, type: 2}
+    - target: {fileID: 9500000, guid: c96b4363d63c4744bb6e695492e49119, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c96b4363d63c4744bb6e695492e49119, type: 3}
   m_IsPrefabAsset: 0
