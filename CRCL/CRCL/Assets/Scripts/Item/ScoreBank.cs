@@ -11,14 +11,13 @@ public class ScoreBank : MonoBehaviour {
     public int m_subScore;               //減点ポイント
     public PlayerController[] m_players; //ゲームに参加しているプレイヤー達    
     public Score m_scoreBank;            //プレイヤー達が失ったスコアをためておく変数
+    private int goalCount;
+    private int count;
 	// Use this for initialization
 	void Start ()
     {
-<<<<<<< HEAD
-=======
         goalCount = 1;
         count = 0;
->>>>>>> d685988fc479eb73459b9dfa0d82142444637d55
         m_scoreBank.SetScore(0);
 	}
 	
@@ -36,8 +35,7 @@ public class ScoreBank : MonoBehaviour {
                 m_players[i].SetDownFlag(false);
             }
             
-<<<<<<< HEAD
-=======
+
             if(m_players[i].GetState() == (int)PlayerController.PLAYER_STATE.GOAL)
             {
                 m_players[i].GetRank().DetermineRANK(goalCount);
@@ -58,8 +56,6 @@ public class ScoreBank : MonoBehaviour {
         {
             count = 0;
             SceneManager.LoadScene("ResultScene");
->>>>>>> d685988fc479eb73459b9dfa0d82142444637d55
-
             
         }
 	}
