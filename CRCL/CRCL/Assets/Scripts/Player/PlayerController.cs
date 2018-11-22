@@ -35,6 +35,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private int m_playerNumber;
+
+    public int PLAYER_NUM
+    {
+        get { return m_playerNumber; }
+    }
+
     //キー入力状態保存用
     private int leftKeyState;
     private int rightKeyState;
