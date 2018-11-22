@@ -34,6 +34,7 @@ public class MoveStageObject : MonoBehaviour
         if (STATE)
         {
             if (collision.transform.tag == "Player")
+                //collision.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                     collision.gameObject.transform.SetParent(null);
         }
     }
