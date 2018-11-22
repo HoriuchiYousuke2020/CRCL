@@ -7,11 +7,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class ScoreBank : MonoBehaviour {
+
+public class ScoreBank : MonoBehaviour
+{
     public int m_subScore;               //減点ポイント
     public PlayerController[] m_players; //ゲームに参加しているプレイヤー達    
     public Score m_scoreBank;            //プレイヤー達が失ったスコアをためておく変数
-    private int goalCount;    //ゴールしたカウント
+    private int goalCount;
     private int count;
 	// Use this for initialization
 	void Start ()
@@ -35,7 +37,8 @@ public class ScoreBank : MonoBehaviour {
                 m_players[i].SetDownFlag(false);
             }
             
-            if(m_players[i].GetState() == (int)PlayerController.PLAYER_STATE.GOAL)
+
+            if(m_players[i].GetState() == PlayerController.PLAYER_STATE.GOAL)
             {
                 m_players[i].GetRank().DetermineRANK(goalCount);
                 //int num;
@@ -55,9 +58,9 @@ public class ScoreBank : MonoBehaviour {
         {
             count = 0;
             SceneManager.LoadScene("ResultScene");
-
+            
         }
-    }
+	}
 
     public Score GetScore()
     {

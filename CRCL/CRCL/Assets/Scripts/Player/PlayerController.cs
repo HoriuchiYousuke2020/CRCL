@@ -8,7 +8,7 @@ using GamepadInput;
 public class PlayerController : MonoBehaviour
 {
     //キャラクター制御
-    private PLAYER_STATE state;    //プレイヤーの状態
+    private PLAYER_STATE playerState;    //プレイヤーの状態
     private bool faceLeft;         //プレイヤーの向いている向き
     private float stateTime;       //プレイヤーの状態終了までの時間
 
@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     public Rank m_rank;         //ランク
     bool m_downFlag;
     bool m_outFlag;
-    bool m_disFlag;
     //操作キー
     public KeyCode UpKey;
     public KeyCode DownKey;
@@ -36,6 +35,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private int m_playerNumber;
+
+    public int PLAYER_NUM
+    {
+        get { return m_playerNumber; }
+    }
+
     //キー入力状態保存用
     private int leftKeyState;
     private int rightKeyState;
@@ -62,7 +67,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Debug.unityLogger.logEnabled = false;
-        state = PLAYER_STATE.NORMAL;
+        playerState = PLAYER_STATE.NORMAL;
         faceLeft = true;
         stateTime = 0;
         rb = GetComponent<Rigidbody>();
@@ -80,7 +85,6 @@ public class PlayerController : MonoBehaviour
 
         m_currentVec = new Vector3(0, 0, 0);
         m_downFlag = false;
-        m_disFlag = false;
     }
 
     // Update is called once per frame
@@ -96,7 +100,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.zero;
             m_outFlag = false;
             ColorChangeA(0.5f);
-            state = PLAYER_STATE.PRESSED;
+            playerState = PLAYER_STATE.PRESSED;
             stateTime = 120.0f;
         }
         Debug.Log("a");
@@ -104,7 +108,7 @@ public class PlayerController : MonoBehaviour
         GetLRKeyState();
         CheckItemKey();
         //キャラクター制御
-        switch (state)
+        switch (playerState)
         {
             case PLAYER_STATE.NORMAL: UpdateStateNormal(); break;
             case PLAYER_STATE.ATTACK: UpdateStateAttack(); break;
@@ -144,7 +148,7 @@ public class PlayerController : MonoBehaviour
 
 
         rb.velocity = new Vector3(rb.velocity.x * friction, rb.velocity.y - gravity * Time.deltaTime, 0);
-      
+
     }
 
     //通常状態の処理
@@ -168,7 +172,7 @@ public class PlayerController : MonoBehaviour
         stateTime -= 60.0f * Time.deltaTime;
         if (stateTime <= 0)
         {
-            state = PLAYER_STATE.NORMAL;
+            playerState = PLAYER_STATE.NORMAL;
         }
     }
 
@@ -184,7 +188,7 @@ public class PlayerController : MonoBehaviour
         stateTime -= 60.0f * Time.deltaTime;
         if (stateTime <= 0)
         {
-            state = PLAYER_STATE.NORMAL;
+            playerState = PLAYER_STATE.NORMAL;
 
         }
     }
@@ -197,7 +201,7 @@ public class PlayerController : MonoBehaviour
         if (stateTime <= 0)
         {
             m_downFlag = true;
-            state = PLAYER_STATE.NORMAL;
+            playerState = PLAYER_STATE.NORMAL;
             ColorChangeA(1.0f);
             m_playerStatus.SetHp(3);
         }
@@ -211,7 +215,7 @@ public class PlayerController : MonoBehaviour
         if (stateTime <= 0)
         {
             m_downFlag = true;
-            state = PLAYER_STATE.NORMAL;
+            playerState = PLAYER_STATE.NORMAL;
             ColorChangeA(1.0f);
             m_playerStatus.SetHp(3);
         }
@@ -253,10 +257,8 @@ public class PlayerController : MonoBehaviour
 
     void UpdateStateGoal()
     {
-        m_disFlag = true;
-        // SceneManager.LoadScene("ResultScene");
-        state = PLAYER_STATE.GOALED;
-       
+        m_score.AddScore(1000);
+        SceneManager.LoadScene("ResultScene");
     }
 
     void Jump()
@@ -270,7 +272,7 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        state = PLAYER_STATE.ATTACK;
+        playerState = PLAYER_STATE.ATTACK;
         stateTime = 60.0f;
 
         if (faceLeft)
@@ -286,14 +288,14 @@ public class PlayerController : MonoBehaviour
     public void Damaged()
     {
        // m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
-        state = PLAYER_STATE.DAMAGED;
+        playerState = PLAYER_STATE.DAMAGED;
         stateTime = 60.0f;
     }
 
     void Swoon()
     {
         ColorChangeA(0.5f);
-        state = PLAYER_STATE.SWOON;
+        playerState = PLAYER_STATE.SWOON;
         stateTime = 300.0f;
     }
 
@@ -314,7 +316,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector3.zero;
         col.SetIsPress(false);
         ColorChangeA(0.5f);
-        state = PLAYER_STATE.PRESSED;
+        playerState = PLAYER_STATE.PRESSED;
         stateTime = 120.0f;
     }
 
@@ -373,7 +375,7 @@ public class PlayerController : MonoBehaviour
     {
         if ((GamePad.GetButtonDown(GamePad.Button.B,m_padNum)|| Input.GetKeyDown(ItemKey)) && m_nowItemNumber != 0)
         {
-            state = PLAYER_STATE.ITEMUSE;
+            playerState = PLAYER_STATE.ITEMUSE;
         }
     }
 
@@ -418,7 +420,7 @@ public class PlayerController : MonoBehaviour
         MAX
     }
 
-   public enum PLAYER_STATE
+    public enum PLAYER_STATE
     {
         NORMAL,
         ATTACK,
@@ -427,7 +429,6 @@ public class PlayerController : MonoBehaviour
         SWOON,
         PRESSED,
         GOAL,
-        GOALED,
         MAX
     }
 
@@ -449,7 +450,7 @@ public class PlayerController : MonoBehaviour
         {
             m_item = gameObject.AddComponent<Item>();
             m_nowItemNumber = 0;
-            state = PLAYER_STATE.NORMAL;
+            playerState = PLAYER_STATE.NORMAL;
         }
 
 
@@ -522,7 +523,7 @@ public class PlayerController : MonoBehaviour
     {
         //敵が攻撃状態で横から衝突したらダメージを受ける
         dir = (DIRECTION)col.GetDirection(nowCollision.gameObject);
-        if (nowCollision.transform.gameObject.GetComponent<PlayerController>().state == PLAYER_STATE.ATTACK &&
+        if (nowCollision.transform.gameObject.GetComponent<PlayerController>().playerState == PLAYER_STATE.ATTACK &&
             (dir == DIRECTION.LEFT || dir == DIRECTION.RIGHT))
         {
           rb.AddForce(nowCollision.contacts[0].normal * 800.0f);
@@ -549,12 +550,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void CollisionEnemy()
     {
-        //衝突時の反発
-        //if (Mathf.Abs(nowCollision.contacts[0].normal.y) > 0)
-        //{
-        //    rb.AddForce(nowCollision.contacts[0].normal * 50.0f);
-        //}
-       /* else*/ if (Mathf.Abs(nowCollision.contacts[0].normal.x) > 0)
+        if (Mathf.Abs(nowCollision.contacts[0].normal.x) > 0)
         {
             rb.AddForce(nowCollision.contacts[0].normal * 50.0f);
         }
@@ -581,7 +577,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void CollisionGoal()
     {
-        state = PLAYER_STATE.GOAL;
+        playerState = PLAYER_STATE.GOAL;
     }
 
     void OnBecameInvisible()
@@ -596,8 +592,8 @@ public class PlayerController : MonoBehaviour
         return col;
     }
 
-     public int GetState()
+    public PLAYER_STATE GetState()
     {
-        return (int)state;
+        return playerState;
     }
 }
