@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         rightKeyState = 0;
         col = gameObject.GetComponent<CollisionCount>();
 
-        m_score.SetScore(0);
+        //m_score.SetScore(0);
         m_rank.DetermineRANK(m_rank.GetLowest());
         m_playerStatus = new Status();
         SetStatus();

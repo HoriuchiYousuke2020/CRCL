@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using GamepadInput;
 public class ChangeScene : MonoBehaviour {
     public string m_sceneName;
+    public Round round;
     private GamePad.Index m_padNum;
     GamepadState keyState;
     // Use this for initialization
@@ -19,7 +20,15 @@ public class ChangeScene : MonoBehaviour {
         keyState = GamePad.GetState(m_padNum, false);
         if (Input.GetKeyDown(KeyCode.Space)|| GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any))
         {
-            SceneManager.LoadScene(m_sceneName);
+            if(round.GetNowround() <2)
+            {
+                SceneManager.LoadScene(m_sceneName);
+            }
+            else
+            {
+                SceneManager.LoadScene("TitleScene");
+            }
+          
         }
 	}
 }

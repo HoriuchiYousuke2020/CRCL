@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_sceneName: StartScene
+  round: {fileID: 11400000, guid: c5c61d171c5cd1240a3043a7527be078, type: 2}
 --- !u!4 &483111430
 Transform:
   m_ObjectHideFlags: 0

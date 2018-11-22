@@ -15,7 +15,7 @@ public class ScoreBank : MonoBehaviour
     public Score m_scoreBank;            //プレイヤー達が失ったスコアをためておく変数
     private int goalCount;
     private int count;
-
+    public Round round;
     [SerializeField]
     private int RESULT_SCENE_COUNT = 600;
 
@@ -28,7 +28,7 @@ public class ScoreBank : MonoBehaviour
     {
         goalCount = 1;
         count = 0;
-        m_scoreBank.SetScore(0);
+        //m_scoreBank.SetScore(0);
 	}
 	
 	// Update is called once per frame
@@ -69,8 +69,9 @@ public class ScoreBank : MonoBehaviour
                 HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight");
             }
         }
-        else if (count > RESULT_SCENE_COUNT + 60)
+        else if (count > RESULT_SCENE_COUNT + 120)
         {
+            round.AddCount();
             SceneManager.LoadScene("ResultScene");
         }
     }
