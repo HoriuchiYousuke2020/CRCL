@@ -11,9 +11,11 @@ public class PlayerController : MonoBehaviour
     private PLAYER_STATE playerState;    //プレイヤーの状態
     private bool faceLeft;         //プレイヤーの向いている向き
     private float stateTime;       //プレイヤーの状態終了までの時間
-
+    [SerializeField]
     private Status m_playerStatus; //プレイヤーのステータス
+
     public Status m_statusType;    //見本にするステータス   
+   
     private Item m_item;           //アイテム
     private int m_nowItemNumber;   //現在のアイテム番号
     public Score m_score;          //スコア
@@ -80,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
         //m_score.SetScore(0);
         m_rank.DetermineRANK(m_rank.GetLowest());
+
         m_playerStatus = new Status();
         SetStatus();
         m_item = gameObject.AddComponent<Item>();
