@@ -13,7 +13,7 @@ public class CameraTarget : MonoBehaviour
         TARGET,
     }
 
-    public GameObject[] player ;
+    public PlayerController[] player ;
     // Use this for initialization
     void Start()
     {
@@ -23,9 +23,24 @@ public class CameraTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for(int i = 0; i <player.Length; i++)
+        {
+           
+            if(player[i].GetState() != PlayerController.PLAYER_STATE.GOALED)
+            {
+                break;
+              
+            }
+
+            if (i == player.Length - 1)
+            {
+                state = STATE.TARGET;
+            }
+        }
         switch(state)
         {
             case STATE.NORMAL: NormalCamera(); break;
+            case STATE.TARGET: Target(); break; 
         }
 
     }
@@ -36,17 +51,25 @@ public class CameraTarget : MonoBehaviour
     /// </summary>
     void NormalCamera()
     {
+       
         //ｙ座標が高いオブジェクトの座標を取得
         for (int i = 0; i < player.Length; i++)
         {
-            if (player[i].transform.position.y > player[targetValue].transform.position.y)
-            {
-                targetValue = i;
-            }
+           
+                if (player[i].transform.position.y > player[targetValue].transform.position.y)
+                {
+                    targetValue = i;
+                }
+           
         }
 
         float distanceX = player[targetValue].transform.position.x - this.transform.position.x;
         float distanceY = player[targetValue].transform.position.y - this.transform.position.y;
         this.transform.position = new Vector3(this.transform.position.x + (distanceX / 10), this.transform.position.y + (distanceY / 10), this.transform.position.z);
+    }
+
+    void Target()
+    {
+        transform.position = new Vector3(-1.43f, 102.5f,-10f);
     }
 }

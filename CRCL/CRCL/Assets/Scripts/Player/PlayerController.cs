@@ -403,7 +403,11 @@ public class PlayerController : MonoBehaviour
     {
         if ((GamePad.GetButtonDown(GamePad.Button.B,m_padNum)|| Input.GetKeyDown(ItemKey)) && m_nowItemNumber != 0)
         {
-            playerState = PLAYER_STATE.ITEMUSE;
+            if(playerState != PLAYER_STATE.GOALED)
+            {
+                playerState = PLAYER_STATE.ITEMUSE;
+            }
+          
         }
     }
 

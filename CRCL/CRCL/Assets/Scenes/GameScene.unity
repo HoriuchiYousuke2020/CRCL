@@ -2681,10 +2681,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player:
-  - {fileID: 1536280334}
-  - {fileID: 529080784}
-  - {fileID: 1394774222}
-  - {fileID: 631053193}
+  - {fileID: 1536280336}
+  - {fileID: 529080786}
+  - {fileID: 1572519204}
+  - {fileID: 737935017}
 --- !u!20 &282840813
 Camera:
   m_ObjectHideFlags: 0
