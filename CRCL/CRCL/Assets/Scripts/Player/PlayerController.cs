@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
         if(playerState == PLAYER_STATE.GOALED)
         {
-            this.transform.position = m_currentPos;
+            this.transform.position = new Vector3(0,-200,0); 
             this.transform.GetComponent<Rigidbody>().useGravity = false;
         }
 
