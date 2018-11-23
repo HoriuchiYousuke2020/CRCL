@@ -20,7 +20,7 @@ public class ScoreBank : MonoBehaviour
     private int RESULT_SCENE_COUNT = 600;
 
     [SerializeField]
-    private GameObject[] HELICOPTER = new GameObject[3];
+    private GameObject[] HELICOPTER = new GameObject[4];
 
 
     // Use this for initialization
@@ -64,7 +64,7 @@ public class ScoreBank : MonoBehaviour
 
         if (count == RESULT_SCENE_COUNT)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight");
             }
