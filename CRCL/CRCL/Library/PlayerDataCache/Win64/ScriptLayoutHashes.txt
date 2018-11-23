@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/s172091/Documents/CRCL11/CRCL/CRCL/exe/CRCL.exe
+C:/Users/s172091/Documents/CRCL11/CRCL.exe
 SceneListBegin?
 Assets/Scenes/TitleScene.unity
 Assets/Scenes/StartScene.unity
@@ -185,6 +185,7 @@ e033f131358cea5a0eabf9561e781deb UnityEngine.TestRunner.dll:UnityEngine.TestTool
 28a95668dd28649297d595834fe8417e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 28a95668dd28649297d595834fe8417e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
 35544458296d7137aa0bf806f5fbbf8b Assembly-CSharp.dll:.CollisionCount
+5b9b2f59726c6ff8c5be027e767006cf Assembly-CSharp.dll:.HitPoint2
 26dcc58fe81b15ad0128d0c4b6e7e40b Assembly-CSharp.dll:.CheckPlayers
 a8acccd208f7c2b7541baf7df0bf19e7 Assembly-CSharp.dll:.GiftScore
 7d9012a985db87e336d760f6607f32b3 Assembly-CSharp.dll:.ItemObject
@@ -195,6 +196,7 @@ e1ea12ca952c81d81a9a21fdf34446ed UnityEngine.HoloLens.dll:UnityEngine.EventSyste
 98d69a140ec0084cde3b6a5e09aea295 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 b93dd18b5e65b32e6deb9ba9d3c2159a Assembly-CSharp.dll:Makoto.Firing
+5b9b2f59726c6ff8c5be027e767006cf Assembly-CSharp.dll:.HitPoint
 aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 18ebcde09312b581464cb50ca3bb01d8 Assembly-CSharp.dll:Makoto.StartSceneDirector
 b4493938e81b3279d1180f461193d1b0 Assembly-CSharp.dll:Makoto.NotFall

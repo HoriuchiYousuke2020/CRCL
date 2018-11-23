@@ -28,8 +28,9 @@ public class ScoreBank : MonoBehaviour
     {
         goalCount = 1;
         count = 0;
+        round.LoadScore();
         //m_scoreBank.SetScore(0);
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -72,6 +73,7 @@ public class ScoreBank : MonoBehaviour
         else if (count > RESULT_SCENE_COUNT + 120)
         {
             round.AddCount();
+            round.SaveScore(round.GetNowround());
             SceneManager.LoadScene("ResultScene");
         }
     }

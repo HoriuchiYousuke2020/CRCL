@@ -11,7 +11,7 @@ public class ChangeScene : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-		
+        round.LoadScore();
 	}
 	
 	// Update is called once per frame
@@ -22,10 +22,12 @@ public class ChangeScene : MonoBehaviour {
         {
             if(round.GetNowround() <2)
             {
+                round.SaveScore(round.GetNowround());
                 SceneManager.LoadScene(m_sceneName);
             }
             else
             {
+                round.SaveScore(round.GetNowround());
                 SceneManager.LoadScene("TitleScene");
             }
           
