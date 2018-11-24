@@ -1007,12 +1007,15 @@ MonoBehaviour:
   - {fileID: 737935017}
   m_scoreBank: {fileID: 11400000, guid: 1155a53b8055411419c3ea6634ccf6d4, type: 2}
   round: {fileID: 11400000, guid: c5c61d171c5cd1240a3043a7527be078, type: 2}
-  RESULT_SCENE_COUNT: 600
+  RESULT_SCENE_COUNT: 300
   HELICOPTER:
   - {fileID: 350814270}
   - {fileID: 1136048806}
   - {fileID: 1037517110}
   - {fileID: 2133921394}
+  m_time: 2
+  m_targetPosition: {x: 0, y: 103, z: -15}
+  CAMERA: {fileID: 282840810}
 --- !u!4 &109548533
 Transform:
   m_ObjectHideFlags: 0
@@ -2680,6 +2683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e272b0a6913317046a1a07f7b283bd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sb: {fileID: 109548532}
   player:
   - {fileID: 1536280336}
   - {fileID: 529080786}

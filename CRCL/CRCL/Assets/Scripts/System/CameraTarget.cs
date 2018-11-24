@@ -6,6 +6,8 @@ public class CameraTarget : MonoBehaviour
 {
     private int targetValue = 0;
     private STATE state;
+    [SerializeField]
+    private ScoreBank sb;
 
     enum STATE
     {
@@ -51,21 +53,23 @@ public class CameraTarget : MonoBehaviour
     /// </summary>
     void NormalCamera()
     {
-       
-        //ｙ座標が高いオブジェクトの座標を取得
-        for (int i = 0; i < player.Length; i++)
+        if(!sb.STATE)
         {
-           
+            //ｙ座標が高いオブジェクトの座標を取得
+            for (int i = 0; i < player.Length; i++)
+            {
+
                 if (player[i].transform.position.y > player[targetValue].transform.position.y)
                 {
                     targetValue = i;
                 }
-           
-        }
 
-        float distanceX = player[targetValue].transform.position.x - this.transform.position.x;
-        float distanceY = player[targetValue].transform.position.y - this.transform.position.y;
-        this.transform.position = new Vector3(this.transform.position.x + (distanceX / 10), this.transform.position.y + (distanceY / 10), this.transform.position.z);
+            }
+
+            float distanceX = player[targetValue].transform.position.x - this.transform.position.x;
+            float distanceY = player[targetValue].transform.position.y - this.transform.position.y;
+            this.transform.position = new Vector3(this.transform.position.x + (distanceX / 10), this.transform.position.y + (distanceY / 10), this.transform.position.z);
+        }
     }
 
     void Target()
