@@ -62,7 +62,7 @@ public class AttackUp : Item
     public AttackUp()
     {
         m_itemNumber = 2;
-        m_itemName = "攻撃アップ";
+        m_itemName = "はずれ";
     }
     // Use this for initialization
     void Start()
@@ -188,7 +188,7 @@ public class DefenceUp: Item
     public DefenceUp()
     {
         m_itemNumber = 5;
-        m_itemName = "防御アップ";
+        m_itemName = "はずれ";
     }
     private void Start()
     {

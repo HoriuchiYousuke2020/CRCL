@@ -86,6 +86,7 @@ public class ScoreBank : MonoBehaviour
         {
             m_startTime = Time.time;
             m_startPosition = CAMERA.transform.position;
+
             state = true;
         }
 
@@ -110,7 +111,7 @@ public class ScoreBank : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight");
+                HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight2");
             }
         }
         else if (count > RESULT_SCENE_COUNT + 120)

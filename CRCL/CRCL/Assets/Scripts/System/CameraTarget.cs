@@ -31,7 +31,6 @@ public class CameraTarget : MonoBehaviour
             if(player[i].GetState() != PlayerController.PLAYER_STATE.GOALED)
             {
                 break;
-              
             }
 
             if (i == player.Length - 1)
@@ -70,10 +69,20 @@ public class CameraTarget : MonoBehaviour
             float distanceY = player[targetValue].transform.position.y - this.transform.position.y;
             this.transform.position = new Vector3(this.transform.position.x + (distanceX / 10), this.transform.position.y + (distanceY / 10), this.transform.position.z);
         }
+        else
+        {
+            foreach (Transform child in transform)
+            {
+                if(child.name == "CameraCollision(Clone)")
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     void Target()
     {
-        transform.position = new Vector3(-1.43f, 102.5f,-10f);
+        transform.position = new Vector3(-1.43f, 102.5f,-15f);
     }
 }

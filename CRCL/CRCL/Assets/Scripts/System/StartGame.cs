@@ -32,6 +32,11 @@ public class StartGame : MonoBehaviour
         //    SceneManager.LoadScene("StartScene");
         //}
 
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         goalCount = 0;
 
         for (int i = 0; i < 4; i++)
@@ -48,7 +53,7 @@ public class StartGame : MonoBehaviour
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight");
+                    HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight2");
                 }
             }
 
