@@ -113,6 +113,8 @@ public class ScoreBank : MonoBehaviour
             {
                 HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight2");
             }
+
+            CAMERA.GetComponent<CameraShake>().Shake(1.5f, 0.2f);
         }
         else if (count > RESULT_SCENE_COUNT + 120)
         {
