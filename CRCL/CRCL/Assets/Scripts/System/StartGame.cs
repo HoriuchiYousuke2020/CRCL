@@ -3,65 +3,103 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using GamepadInput;
-public class StartGame : MonoBehaviour
+
+namespace Makoto
 {
-    //GamepadState keyState;
-    [SerializeField]
-    private PlayerController[] m_players = new PlayerController[4];
-
-    [SerializeField]
-    private GameObject[] HELICOPTER = new GameObject[4];
-
-    private int goalCount;
-
-    private int timer;
-
-    // Use this for initialization
-    void Start ()
+    public class StartGame : MonoBehaviour
     {
-        goalCount = 0;
-        timer = 0;
-    }
+        //GamepadState keyState;
+        [SerializeField]
+        private PlayerController m_player;
 
-    // Update is called once per frame
-    void Update()
-    {
-        //keyState = GamePad.GetState(0, false);
-        //if (Input.GetKeyDown(KeyCode.Space) || GamePad.GetButtonDown(GamePad.Button.Start, 0))
-        //{
-        //    SceneManager.LoadScene("StartScene");
-        //}
+        [SerializeField]
+        private GameObject[] HELICOPTER = new GameObject[3];
 
-        if(Input.GetKeyDown(KeyCode.R))
+        [SerializeField]
+        private GameObject CAMERA;
+
+        [SerializeField]
+        private TitleScenePlayer TSP;
+
+        [SerializeField]
+        private string StartSceneName;
+
+        [SerializeField]
+        private string ManualSceneName;
+
+        private int goalCount;
+
+        private int timer;
+
+        // Use this for initialization
+        void Start()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            goalCount = 0;
+            timer = 0;
         }
 
-        goalCount = 0;
-
-        for (int i = 0; i < 4; i++)
+        // Update is called once per frame
+        void Update()
         {
-            if (m_players[i].GetState() == PlayerController.PLAYER_STATE.GOALED)
+            //keyState = GamePad.GetState(0, false);
+            //if (Input.GetKeyDown(KeyCode.Space) || GamePad.GetButtonDown(GamePad.Button.Start, 0))
+            //{
+            //    SceneManager.LoadScene("StartScene");
+            //}
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+            goalCount = 0;
+
+            if (m_player.GetState() == PlayerController.PLAYER_STATE.GOALED)
             {
                 goalCount++;
             }
-        }
 
-        if(goalCount >= 4)
-        {
-            if(timer == 0)
+            if (goalCount == 1)
             {
-                for (int i = 0; i < 4; i++)
+                if (timer == 0)
                 {
-                    HELICOPTER[i].GetComponent<Animator>().SetTrigger("Flight2");
+                    switch(TSP.STATE)
+                    {
+                        case TitleScenePlayer.SCENE.NONE:
+                            break;
+                        case TitleScenePlayer.SCENE.START:
+                            HELICOPTER[0].GetComponent<Animator>().SetTrigger("Flight2");
+                            break;
+                        case TitleScenePlayer.SCENE.EXIT:
+                            HELICOPTER[1].GetComponent<Animator>().SetTrigger("Flight2");
+                            break;
+                        case TitleScenePlayer.SCENE.MANUAL:
+                            HELICOPTER[2].GetComponent<Animator>().SetTrigger("Flight2");
+                            break;
+                    }
+
+                    CAMERA.GetComponent<CameraShake>().Shake(1.5f, 0.2f);
                 }
-            }
 
-            timer++;
+                timer++;
 
-            if(timer > 120)
-            {
-                SceneManager.LoadScene("StartScene");
+                if (timer > 120)
+                {
+                    switch (TSP.STATE)
+                    {
+                        case TitleScenePlayer.SCENE.NONE:
+                            break;
+                        case TitleScenePlayer.SCENE.START:
+                            SceneManager.LoadScene(StartSceneName);
+                            break;
+                        case TitleScenePlayer.SCENE.EXIT:
+                            Application.Quit();
+                            break;
+                        case TitleScenePlayer.SCENE.MANUAL:
+                            SceneManager.LoadScene(ManualSceneName);
+                            break;
+                    }
+                }
             }
         }
     }

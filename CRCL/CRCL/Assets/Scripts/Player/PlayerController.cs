@@ -44,7 +44,10 @@ public class PlayerController : MonoBehaviour
     }
 
     [SerializeField]
-    private Makoto.GoalDirector GoalDirector;
+    private Makoto.GoalDirector[] GoalDirector;
+
+    [SerializeField]
+    private bool StartSceneState;
 
     //キー入力状態保存用
     private int leftKeyState;
@@ -275,10 +278,8 @@ public class PlayerController : MonoBehaviour
         playerState = PLAYER_STATE.GOALED;
         ColorChangeA(0.0f);
         gameObject.layer = 1;
-        
-        GoalDirector.player.Add(this);
-       // m_score.AddScore(1000);
-       // SceneManager.LoadScene("ResultScene");
+        // m_score.AddScore(1000);
+        // SceneManager.LoadScene("ResultScene");
     }
 
     void Jump()
@@ -373,7 +374,26 @@ public class PlayerController : MonoBehaviour
             {
                 CollisionGoal();
             }
-         
+
+            if(StartSceneState)
+            {
+                if (c.name == "StartCol")
+                {
+                    GoalDirector[0].player.Add(this);
+                }
+                else if (c.name == "ExitCol")
+                {
+                    GoalDirector[1].player.Add(this);
+                }
+                else if (c.name == "ManualCol")
+                {
+                    GoalDirector[2].player.Add(this);
+                }
+            }
+            else
+            {
+                GoalDirector[0].player.Add(this);
+            }    
         }
     }
 
