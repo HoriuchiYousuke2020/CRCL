@@ -32,6 +32,9 @@ public class ScoreBank : MonoBehaviour
     [SerializeField]
     private GameObject CAMERA;
 
+    [SerializeField]
+    private Fade Fade;
+
     private float m_startTime = 0.0f;
     private Vector3 m_startPosition = Vector3.zero;
 
@@ -116,7 +119,11 @@ public class ScoreBank : MonoBehaviour
 
             CAMERA.GetComponent<CameraShake>().Shake(1.5f, 0.2f);
         }
-        else if (count > RESULT_SCENE_COUNT + 120)
+        else if(count == RESULT_SCENE_COUNT + 130)
+        {
+            Fade.FadeIn();
+        }
+        else if (count > RESULT_SCENE_COUNT + 170)
         {
             round.AddCount();
             round.SaveScore(round.GetNowround());

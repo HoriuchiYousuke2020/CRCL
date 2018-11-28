@@ -124,7 +124,7 @@ da21fc3f8056b1f91c3dd09c7bf4f90a UnityEngine.Networking.dll:UnityEngine.Networki
 529a95e9e8e7686c4816e08fbb37183f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 fc061f3ae8a876c0687e86378d4a447c UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 7ca56e063bd071986fff4f513cc4f477 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-a0db21323fb0dfdd36b8ca1669757ba9 Assembly-CSharp.dll:.ScoreBank
+c372030f617c0250dc2321c4b8ccf95b Assembly-CSharp.dll:.ScoreBank
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.Item
 7f3d93aec7267a0c55752e7fe29b3af1 Assembly-CSharp.dll:.PlayerController
@@ -140,7 +140,7 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 37ca54bbfcf5a6fa4d9f10093c5f79d4 Assembly-CSharp.dll:.Round
 ce3507eb551b0d269816ef67c2f05f84 Assembly-CSharp.dll:.Score
 96f3ea9f23b6f08e60710ebb4af49174 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
-94912941a1b21a75bb1e213dc1bb9f7a Assembly-CSharp.dll:.ChangeScene
+249fa373ff1c146bd118f56208bddbf7 Assembly-CSharp.dll:.ChangeScene
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:Makoto.Testmove
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.UniFPSCounter
 b4232df4348379a39d9f34ed63e535a7 Assembly-CSharp.dll:Makoto.MovePattern2
@@ -152,7 +152,7 @@ e1ec01dc7d4d746d5e2bff01003b8a4e Assembly-CSharp.dll:.CameraTarget
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.SpeedUp
 486cd95c82d8305219c352c06b776e1f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 f58c395013626eafdc019540948ad7df Assembly-CSharp.dll:.DisplayScore
-011f26f6df0bd62d2e150a2cde8df2ab Assembly-CSharp.dll:Makoto.StartGame
+31dcc5052bca3af57cf443eff60d2752 Assembly-CSharp.dll:Makoto.StartGame
 754f0663dd705e4b3aef7448726edb66 Assembly-CSharp.dll:.CreateCameraCollision
 eaf0bcdb10d442a4029d615f41d09957 Unity.TextMeshPro.dll:TMPro.TextContainer
 84313a10024a367832b20f7411d421dd Assembly-CSharp.dll:.Example
@@ -201,14 +201,16 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 b93dd18b5e65b32e6deb9ba9d3c2159a Assembly-CSharp.dll:Makoto.Firing
 5b9b2f59726c6ff8c5be027e767006cf Assembly-CSharp.dll:.HitPoint
 aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
-18ebcde09312b581464cb50ca3bb01d8 Assembly-CSharp.dll:Makoto.StartSceneDirector
+db562bcab1269ac7b7e726a1cf37d5a1 Assembly-CSharp.dll:Makoto.StartSceneDirector
 8b20f741aebfd5974daa1c0147492f8e Assembly-CSharp.dll:.Stage1Director
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:Makoto.TitleScenePlayer
 b4493938e81b3279d1180f461193d1b0 Assembly-CSharp.dll:Makoto.NotFall
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.Ranking
+5f234402f7e02212eb94da1817e1ec08 Assembly-CSharp.dll:.UIController
 219d4b5e3179a6f3f7b13277b48630a1 Assembly-CSharp.dll:.DisPlayItem
 0ceddc700e708c88504fd465568df18b Assembly-CSharp.dll:Makoto.Direction
+715d8b2ebf74a18176d28052ec0785c2 Assembly-CSharp.dll:.Fade
 afc736cc6f2f12e5c68d67218c419a91 Assembly-CSharp.dll:.MoveStageObject
 e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.Rank
@@ -216,4 +218,3 @@ e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 9318334b30e9f195f573b2ce00154b95 Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 aa9ddebd9711c2ee859389567f2907a5 Assembly-CSharp.dll:Makoto.MovePattern1
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
-5f234402f7e02212eb94da1817e1ec08 Assembly-CSharp.dll:.UIController

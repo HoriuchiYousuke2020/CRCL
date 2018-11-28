@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using GamepadInput;
+using UnityEngine.UI;
 
 namespace Makoto
 {
@@ -27,6 +28,9 @@ namespace Makoto
         [SerializeField]
         private string ManualSceneName;
 
+        [SerializeField]
+        private Fade Fade;
+
         private int goalCount;
 
         private int timer;
@@ -34,6 +38,7 @@ namespace Makoto
         // Use this for initialization
         void Start()
         {
+            Fade.FadeOut();
             goalCount = 0;
             timer = 0;
         }
@@ -46,11 +51,6 @@ namespace Makoto
             //{
             //    SceneManager.LoadScene("StartScene");
             //}
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
 
             goalCount = 0;
 
@@ -82,8 +82,13 @@ namespace Makoto
                 }
 
                 timer++;
+                
+                if(timer == 130)
+                {
+                    Fade.FadeIn();
+                }
 
-                if (timer > 120)
+                if (timer > 200)
                 {
                     switch (TSP.STATE)
                     {

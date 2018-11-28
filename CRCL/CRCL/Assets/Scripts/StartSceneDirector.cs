@@ -15,33 +15,44 @@ namespace Makoto
         [Range(1,10)]
         private int CountDownTime = 3;
 
+        [SerializeField]
+        private Fade Fade;
+
         private float startTime;
         private float currentTime;
 
         // Use this for initialization
         void Start()
         {
+            Fade.FadeOut();
             startTime = Time.realtimeSinceStartup;
         }
 
         // Update is called once per frame
         void Update()
         {
-            currentTime = Time.realtimeSinceStartup;
-
-            float time = (CountDownTime + 1) - ((currentTime - startTime));
-
-            if (time < 1.0f && time > 0.5f)
+            if (Fade.STATE == Fade.State.SEE_THROUGH)
             {
-                CountDownText.text = "GO";
-            }
-            else if(time < 0.5f)
-            {
-                SceneManager.LoadScene("GameScene");
+                currentTime = Time.realtimeSinceStartup;
+
+                float time = (CountDownTime + 1) - ((currentTime - startTime));
+
+                if (time < 1.0f && time > 0.5f)
+                {
+                    CountDownText.text = "GO";
+                }
+                else if (time < 0.5f)
+                {
+                    SceneManager.LoadScene("GameScene");
+                }
+                else
+                {
+                    CountDownText.text = ((int)time).ToString();
+                }
             }
             else
             {
-                CountDownText.text = ((int)time).ToString();
+                startTime = Time.realtimeSinceStartup;
             }
         }
     }
