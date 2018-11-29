@@ -88,7 +88,7 @@ namespace Makoto
                     Fade.FadeIn();
                 }
 
-                if (timer > 200)
+                if (timer > 130 + (Fade.TIME * 60) + 10)
                 {
                     switch (TSP.STATE)
                     {

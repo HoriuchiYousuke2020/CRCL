@@ -733,9 +733,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  m_time: 0
+  m_time: 2
   m_targetPosition: {x: 0, y: 0, z: 0}
-  CAMERA: {fileID: 0}
+  CAMERA: {fileID: 282840810}
+  Fade: {fileID: 354048027}
 --- !u!4 &109548533
 Transform:
   m_ObjectHideFlags: 0
@@ -2088,7 +2089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 1456312728}
-  Time: 0.5
+  Time: 1
   state: 1
 --- !u!1 &355633255 stripped
 GameObject:

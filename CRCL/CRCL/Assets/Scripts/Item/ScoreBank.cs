@@ -123,7 +123,7 @@ public class ScoreBank : MonoBehaviour
         {
             Fade.FadeIn();
         }
-        else if (count > RESULT_SCENE_COUNT + 170)
+        else if (count > RESULT_SCENE_COUNT + 130 + (Fade.TIME * 60) + 10)
         {
             round.AddCount();
             round.SaveScore(round.GetNowround());

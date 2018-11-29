@@ -22,6 +22,11 @@ public class Fade : MonoBehaviour
     [Range(0.1f, 10.0f)]
     private float Time;
 
+    public float TIME
+    {
+        get { return Time; }
+    }
+
     [SerializeField]
     private State state;
 

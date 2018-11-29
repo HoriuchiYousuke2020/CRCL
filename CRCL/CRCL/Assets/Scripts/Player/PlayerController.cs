@@ -181,6 +181,11 @@ public class PlayerController : MonoBehaviour
         {
             Attack();
         }
+
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            rb.position = new Vector3(rb.position.x, 100);
+        }
     }
 
     //攻撃状態の処理

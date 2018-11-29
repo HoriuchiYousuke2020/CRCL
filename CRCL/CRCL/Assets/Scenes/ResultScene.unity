@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 2110692226}
-  Time: 0.5
+  Time: 1
   state: 1
 --- !u!1001 &572143086
 Prefab:

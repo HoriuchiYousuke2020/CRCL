@@ -39,7 +39,7 @@ public class ChangeScene : MonoBehaviour
             timer++;
         }
 
-        if(timer > 40)
+        if(timer > (Fade.TIME * 60) + 10)
         {
             if (round.GetNowround() < 2)
             {

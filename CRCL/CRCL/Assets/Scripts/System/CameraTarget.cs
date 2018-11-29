@@ -83,6 +83,6 @@ public class CameraTarget : MonoBehaviour
 
     void Target()
     {
-        transform.position = new Vector3(-1.43f, 102.5f,-10f);
+        transform.position = new Vector3(-0.7f, 102.51f, -15f);
     }
 }

@@ -1039,7 +1039,7 @@ MonoBehaviour:
   - {fileID: 1037517110}
   - {fileID: 2133921394}
   m_time: 2
-  m_targetPosition: {x: -1.43, y: 103, z: -15}
+  m_targetPosition: {x: -0.7, y: 102.51, z: -15}
   CAMERA: {fileID: 282840810}
   Fade: {fileID: 109548534}
 --- !u!4 &109548533
@@ -1067,7 +1067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 1986511251}
-  Time: 0.5
+  Time: 1
   state: 0
 --- !u!1 &117383625 stripped
 GameObject:
