@@ -71,6 +71,9 @@ public class PlayerController : MonoBehaviour
     Vector3 m_currentPos;
 
     const float haba = 1.5f;
+
+    public bool goalFlag;
+
     // Use this for initialization
     void Start()
     {
@@ -96,6 +99,7 @@ public class PlayerController : MonoBehaviour
 
         m_currentVec = new Vector3(0, 0, 0);
         m_downFlag = false;
+        goalFlag = false;
     }
 
     // Update is called once per frame
@@ -640,7 +644,10 @@ public    void CollisionEnemy()
 
     void OnBecameInvisible()
     {
-        m_outFlag = true;
+        if (!goalFlag)
+        {
+            m_outFlag = true;
+        }
     }
 
     public Color GetColor()

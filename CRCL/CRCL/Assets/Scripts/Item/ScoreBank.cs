@@ -91,6 +91,11 @@ public class ScoreBank : MonoBehaviour
             m_startPosition = CAMERA.transform.position;
 
             state = true;
+
+            for(int i = 0; i < m_players.Length;i++)
+            {
+                m_players[i].goalFlag = true;
+            }
         }
 
         if(count > RESULT_SCENE_COUNT - 120 && count < RESULT_SCENE_COUNT)
