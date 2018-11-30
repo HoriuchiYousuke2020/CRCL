@@ -15,7 +15,9 @@ public class CameraTarget : MonoBehaviour
         TARGET,
     }
 
-    public PlayerController[] player ;
+    [SerializeField]
+    private PlayerController[] player = new PlayerController[4];
+
     // Use this for initialization
     void Start()
     {
@@ -55,14 +57,12 @@ public class CameraTarget : MonoBehaviour
         if(!sb.STATE)
         {
             //ｙ座標が高いオブジェクトの座標を取得
-            for (int i = 0; i < player.Length; i++)
+            for (int i = 0; i < Setting.PlayerNum; i++)
             {
-
                 if (player[i].transform.position.y > player[targetValue].transform.position.y)
                 {
                     targetValue = i;
                 }
-
             }
 
             float distanceX = player[targetValue].transform.position.x - this.transform.position.x;

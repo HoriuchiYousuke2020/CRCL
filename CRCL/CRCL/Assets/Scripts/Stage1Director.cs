@@ -17,27 +17,43 @@ public class Stage1Director : MonoBehaviour
     float STAGE_RIGHT;
 
     [SerializeField]
-    GameObject[] Player = new GameObject[4];
+    GameObject[] Player = new GameObject[Setting.PLAYER_MAX];
 
     [SerializeField]
     GameObject Camera;
 
+    [SerializeField]
+    private bool State;
+
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+        for (int i = 0; i < Setting.PLAYER_MAX; i++)
+        {
+            if (i < Setting.PlayerNum)
+            {
+                Player[i].transform.position = Setting.START_PLAYER_POS[Setting.PlayerNum - Setting.PLAYER_MIN, i];
+            }
+            else
+            {
+                Player[i].SetActive(false);
+            }
+        }
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-		for(int i = 0; i < 4; i++)
+        if (State)
         {
-            Vector3 pos = Player[i].transform.position;
-
-            if(pos.y > STAGE_TOP || pos.y < STAGE_BOTTOM || pos.x < STAGE_LEFT || pos.x > STAGE_RIGHT)
+            for (int i = 0; i < Setting.PlayerNum; i++)
             {
-                Player[i].transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, 0);
+                Vector3 pos = Player[i].transform.position;
+
+                if (pos.y > STAGE_TOP || pos.y < STAGE_BOTTOM || pos.x < STAGE_LEFT || pos.x > STAGE_RIGHT)
+                {
+                    Player[i].transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, 0);
+                }
             }
         }
 	}

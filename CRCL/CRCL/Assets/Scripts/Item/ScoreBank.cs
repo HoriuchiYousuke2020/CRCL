@@ -12,7 +12,7 @@ using System;
 public class ScoreBank : MonoBehaviour
 {
     public int m_subScore;               //減点ポイント
-    public PlayerController[] m_players; //ゲームに参加しているプレイヤー達    
+    public PlayerController[] m_players = new PlayerController[4]; //ゲームに参加しているプレイヤー達    
     public Score m_scoreBank;            //プレイヤー達が失ったスコアをためておく変数
     private int goalCount;
     private int count;

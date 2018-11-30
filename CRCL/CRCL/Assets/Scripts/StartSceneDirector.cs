@@ -9,6 +9,9 @@ namespace Makoto
     public class StartSceneDirector : MonoBehaviour
     {
         [SerializeField]
+        private GameObject[] Players = new GameObject[Setting.PLAYER_MAX];
+
+        [SerializeField]
         private Text CountDownText;
 
         [SerializeField]
@@ -26,6 +29,18 @@ namespace Makoto
         {
             Fade.FadeOut();
             startTime = Time.realtimeSinceStartup;
+
+            for(int i = 0; i < Setting.PLAYER_MAX; i++)
+            {
+                if(i < Setting.PlayerNum)
+                {
+                    Players[i].transform.position = Setting.START_PLAYER_POS[Setting.PlayerNum - Setting.PLAYER_MIN, i];
+                }
+                else
+                {
+                    Players[i].SetActive(false);
+                }
+            }
         }
 
         // Update is called once per frame

@@ -30,12 +30,12 @@ public class CheckPlayers : MonoBehaviour
     void Update()
     {
         //プレイシーンにいるプレイヤーのポジションを把握する
-        for (int i = 0; i < m_players.Length; i++)
+        for (int i = 0; i < Setting.PlayerNum; i++)
         {
             m_stockPos[i] = m_players[i].transform.position;
         }
         
-        for (int i = 0; i < m_players.Length; i++)
+        for (int i = 0; i < Setting.PlayerNum; i++)
         {
             //プレイヤーの誰かが全体アイテムを使ったら
             if (m_players[i].GetItem().GetScrollsFlag((int)Item.SCROLLS_STATE.REPLACE_All) == true)
@@ -65,9 +65,9 @@ public class CheckPlayers : MonoBehaviour
     public void ReplaceAll()
     {
         var ary = Enumerable.Range(0, m_players.Length).OrderBy(n => Guid.NewGuid()).Take(m_players.Length).ToArray();
-        for (int i = 0; i < m_players.Length; i++)
+        for (int i = 0; i < Setting.PlayerNum; i++)
         {
-            if (ary[i] != i || i != m_players.Length)
+            if (ary[i] != i || i != Setting.PlayerNum)
             {
                 m_players[i].transform.position = m_stockPos[ary[i]];
             }

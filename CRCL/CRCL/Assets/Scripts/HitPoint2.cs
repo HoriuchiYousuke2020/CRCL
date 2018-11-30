@@ -6,10 +6,14 @@ public class HitPoint2 : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+
     // Use this for initialization
     void Start()
     {
-
+        if(player.GetComponent<PlayerController>().PLAYER_NUM > Setting.PlayerNum)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

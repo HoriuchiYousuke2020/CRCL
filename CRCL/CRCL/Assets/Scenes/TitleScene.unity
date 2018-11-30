@@ -1659,7 +1659,7 @@ MonoBehaviour:
   - {fileID: 382914335}
   CAMERA: {fileID: 1012166536}
   TSP: {fileID: 1180703948}
-  StartSceneName: StartScene
+  StartSceneName: SettingScene
   ManualSceneName: TitleScene
   Fade: {fileID: 1254481089}
 --- !u!114 &1254481089

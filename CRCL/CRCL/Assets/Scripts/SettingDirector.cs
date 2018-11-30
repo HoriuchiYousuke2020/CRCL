@@ -63,6 +63,22 @@ namespace Makoto
             {
                 //currentControllerNum = Input.GetJoystickNames().Length;
                 currentControllerNum = testNum;
+                if(Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    testNum--;
+                    if (testNum < 0)
+                    {
+                        testNum = 0;
+                    }
+                }
+                else if(Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    testNum++;
+                    if(testNum > 4)
+                    {
+                        testNum = 4;
+                    }
+                }
 
                 PlayerNumText.text = "現在の人数は" + currentControllerNum + "人です";
 
@@ -80,7 +96,7 @@ namespace Makoto
 
                 lastControllerNum = currentControllerNum;
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && currentControllerNum >= Setting.PLAYER_MIN)
                 {
                     sceneLoadFlag = true;
                     Fade.FadeIn();
@@ -92,6 +108,7 @@ namespace Makoto
 
                 if(timer > Fade.TIME * 60 + 10)
                 {
+                    Setting.PlayerNum = currentControllerNum;
                     SceneManager.LoadScene(NextSceneName);
                 }
             }
