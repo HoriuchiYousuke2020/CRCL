@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: ScoreBank
   m_EditorClassIdentifier: 
   SAVE_KEY: Score_Bank
+  m_score: 0

@@ -376,6 +376,7 @@ MonoBehaviour:
   Fade: {fileID: 483111431}
   m_sceneName: StartScene
   round: {fileID: 11400000, guid: c5c61d171c5cd1240a3043a7527be078, type: 2}
+  score: {fileID: 11400000, guid: 1155a53b8055411419c3ea6634ccf6d4, type: 2}
 --- !u!4 &483111430
 Transform:
   m_ObjectHideFlags: 0
@@ -629,6 +630,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d6e95b61033fa8246ae83da757c50f35, type: 2}
   - {fileID: 11400000, guid: 79177fc4ea918bc419c031230f531eff, type: 2}
   m_scoreBank: {fileID: 11400000, guid: 1155a53b8055411419c3ea6634ccf6d4, type: 2}
+  time: 0
+  interval: 0.05
 --- !u!4 &1245475898
 Transform:
   m_ObjectHideFlags: 0

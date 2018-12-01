@@ -12,6 +12,7 @@ public class ChangeScene : MonoBehaviour
     public Round round;
     private GamePad.Index m_padNum;
     GamepadState keyState;
+    public Score score;
     private bool nextSceneFlag;
     private int timer;
 
@@ -28,7 +29,7 @@ public class ChangeScene : MonoBehaviour
 	void Update ()
     {
         keyState = GamePad.GetState(m_padNum, false);
-        if (Input.GetKeyDown(KeyCode.Space)|| GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any))
+        if ((Input.GetKeyDown(KeyCode.Space)|| GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any))&& score.GetScore() <= 0)
         {
             nextSceneFlag = true;
             Fade.FadeIn();
@@ -38,6 +39,7 @@ public class ChangeScene : MonoBehaviour
         {
             timer++;
         }
+
 
         if(timer > (Fade.TIME * 60) + 10)
         {

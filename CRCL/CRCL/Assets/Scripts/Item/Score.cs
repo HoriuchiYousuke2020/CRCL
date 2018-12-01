@@ -9,6 +9,7 @@ using UnityEngine;
 public class Score : ScriptableObject {
 
     public string SAVE_KEY;        //セーブするための文字キー
+    [SerializeField]
     private  int m_score;          //スコア
 
 
