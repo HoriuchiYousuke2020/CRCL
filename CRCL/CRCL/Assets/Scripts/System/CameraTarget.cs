@@ -65,9 +65,9 @@ public class CameraTarget : MonoBehaviour
                 }
             }
 
-            float distanceX = player[targetValue].transform.position.x - this.transform.position.x;
+            float distanceX = player[targetValue].transform.position.x - this.transform.position.x + 4;
             float distanceY = player[targetValue].transform.position.y - this.transform.position.y;
-            this.transform.position = new Vector3(this.transform.position.x + (distanceX / 10), this.transform.position.y + (distanceY / 10), this.transform.position.z);
+            this.transform.position = new Vector3(this.transform.position.x + (distanceX / 20), this.transform.position.y + (distanceY / 20), this.transform.position.z);
         }
         else
         {

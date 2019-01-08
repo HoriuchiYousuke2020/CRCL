@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class DisplayScore : MonoBehaviour
 {
     [SerializeField]
@@ -10,6 +10,7 @@ public class DisplayScore : MonoBehaviour
     [SerializeField]
     private int PlayerNumber;
 
+    private Text m_text;
     // Use this for initialization
     void Start ()
     {
@@ -17,11 +18,12 @@ public class DisplayScore : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+        m_text = this.GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-         this.GetComponent<TextMesh>().text = m_score.GetScore().ToString();
+       m_text.text =  m_score.GetScore().ToString();        
     }
 }
