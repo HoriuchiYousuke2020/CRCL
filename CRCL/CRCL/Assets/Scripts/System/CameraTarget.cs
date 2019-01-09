@@ -4,47 +4,71 @@ using UnityEngine;
 
 public class CameraTarget : MonoBehaviour
 {
-    private int targetValue = 0;
+    //カメラの座標をずらすための変数
+    public int slide = 0;
+    private int m_slide = 0;
+
     private STATE state;
     [SerializeField]
     private ScoreBank sb;
-
+    private bool targetFlag = false;
     enum STATE
     {
         NORMAL,
         TARGET,
     }
 
+    Vector2[] CameraLimit =
+    {
+        //上下
+        new Vector2(110,5),
+        //左右
+        new Vector2(-12,12)
+    };
+
     [SerializeField]
     private PlayerController[] player = new PlayerController[4];
 
     // Use this for initialization
-    void Start()
-    {
-        state = STATE.NORMAL;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i <player.Length; i++)
+        if(targetFlag == true)
         {
-           
-            if(player[i].GetState() != PlayerController.PLAYER_STATE.GOALED)
+            for (int i = 0; i < player.Length; i++)
             {
-                break;
+
+                if (player[i].GetState() != PlayerController.PLAYER_STATE.GOALED)
+                {
+                    break;
+                }
+
+                if (i == player.Length - 1)
+                {
+                    state = STATE.TARGET;
+                }
             }
 
-            if (i == player.Length - 1)
+            switch (state)
             {
-                state = STATE.TARGET;
+                case STATE.NORMAL: NormalCamera(); break;
+                case STATE.TARGET: Target(); break;
+            }
+            return;
+        }
+
+        foreach(PlayerController p in player)
+        {
+            if(p.transform.position.y > 5)
+            {
+                targetFlag = true;
             }
         }
-        switch(state)
-        {
-            case STATE.NORMAL: NormalCamera(); break;
-            case STATE.TARGET: Target(); break; 
-        }
+    }
+
+    void StartCamera()
+    {
 
     }
 
@@ -56,7 +80,8 @@ public class CameraTarget : MonoBehaviour
     {
         if(!sb.STATE)
         {
-            //ｙ座標が高いオブジェクトの座標を取得
+            int targetValue = 0;
+            //高いプレイヤの番号を取得
             for (int i = 0; i < Setting.PlayerNum; i++)
             {
                 if (player[i].transform.position.y > player[targetValue].transform.position.y)
@@ -64,10 +89,9 @@ public class CameraTarget : MonoBehaviour
                     targetValue = i;
                 }
             }
+            
+            this.transform.position = new Vector3(Mathf.Lerp(transform.position.x, player[targetValue].transform.position.x + 4, 60), Mathf.Lerp(transform.position.y, player[targetValue].transform.position.y + 1, 60), this.transform.position.z);
 
-            float distanceX = player[targetValue].transform.position.x - this.transform.position.x + 4;
-            float distanceY = player[targetValue].transform.position.y - this.transform.position.y;
-            this.transform.position = new Vector3(this.transform.position.x + (distanceX / 20), this.transform.position.y + (distanceY / 20), this.transform.position.z);
         }
         else
         {
@@ -84,5 +108,11 @@ public class CameraTarget : MonoBehaviour
     void Target()
     {
         transform.position = new Vector3(-0.7f, 102.51f, -15f);
+    }
+
+    public int Slide
+    {
+        get { return slide; }
+        set { slide = value; }
     }
 }

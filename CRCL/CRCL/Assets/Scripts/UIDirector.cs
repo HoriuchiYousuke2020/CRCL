@@ -28,44 +28,44 @@ namespace Makoto
         // Use this for initialization
         void Start()
         {
-            state = false;
+            //state = false;
         }
 
         // Update is called once per frame
         void Update()
         {
-            for (int i = 0; i < 4; i++)
-            {
-                if (Camera.transform.position.x + 5 < Player[i].transform.position.x)
-                {
-                    state = true;
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    if (Camera.transform.position.x + 5 < Player[i].transform.position.x)
+            //    {
+            //        state = true;
 
-                    break;
-                }
-                else
-                {
-                    state = false;
-                }
-            }
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        state = false;
+            //    }
+            //}
 
-            if (state)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    Score[i].color = new Color(Score[i].color.r, Score[i].color.g, Score[i].color.b, Alpha / 255.0f);
-                    Item[i].color = new Color(Item[i].color.r, Item[i].color.g, Item[i].color.b, Alpha / 255.0f);
-                }
+            //if (state)
+            //{
+            //    for (int i = 0; i < 2; i++)
+            //    {
+            //        Score[i].color = new Color(Score[i].color.r, Score[i].color.g, Score[i].color.b, Alpha / 255.0f);
+            //        Item[i].color = new Color(Item[i].color.r, Item[i].color.g, Item[i].color.b, Alpha / 255.0f);
+            //    }
 
-                state = false;
-            }
-            else
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    Score[i].color = new Color(Score[i].color.r, Score[i].color.g, Score[i].color.b, 1.0f);
-                    Item[i].color = new Color(Item[i].color.r, Item[i].color.g, Item[i].color.b, 1.0f);
-                }
-            }          
+            //    state = false;
+            //}
+            //else
+            //{
+            //    for (int i = 0; i < 2; i++)
+            //    {
+            //        Score[i].color = new Color(Score[i].color.r, Score[i].color.g, Score[i].color.b, 1.0f);
+            //        Item[i].color = new Color(Item[i].color.r, Item[i].color.g, Item[i].color.b, 1.0f);
+            //    }
+            //}          
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Makoto
 
         [SerializeField]
         [Range(1,10)]
-        private int CountDownTime = 3;
+        private int CountDownTime = 7;
 
         [SerializeField]
         private Fade Fade;
@@ -60,7 +60,7 @@ namespace Makoto
                 {
                     SceneManager.LoadScene("GameScene");
                 }
-                else
+                else if (time < 4)
                 {
                     CountDownText.text = ((int)time).ToString();
                 }

@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 492}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1280
     height: 587
-  m_MinSize: {x: 911, y: 421}
+  m_MinSize: {x: 911, y: 442}
   m_MaxSize: {x: 22006, y: 10021}
   vertical: 0
-  controlID: 1891
+  controlID: 75
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -131,10 +131,10 @@ MonoBehaviour:
     y: 0
     width: 1003
     height: 587
-  m_MinSize: {x: 636, y: 421}
+  m_MinSize: {x: 636, y: 442}
   m_MaxSize: {x: 18006, y: 10021}
   vertical: 0
-  controlID: 1892
+  controlID: 76
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -155,10 +155,10 @@ MonoBehaviour:
     y: 0
     width: 563
     height: 587
-  m_MinSize: {x: 202, y: 421}
-  m_MaxSize: {x: 4002, y: 8021}
+  m_MinSize: {x: 202, y: 442}
+  m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 1893
+  controlID: 53
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -390,14 +390,14 @@ MonoBehaviour:
     height: 257
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 11806.681397110297
+  lastFramingTime: 501.4647935877676
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 270.84158, y: 145.56497, z: 21.323013}
+    m_Target: {x: -250.3404, y: 51.703156, z: -35.09359}
     speed: 2
-    m_Value: {x: 270.84158, y: 145.56497, z: 21.323013}
+    m_Value: {x: -250.3404, y: 51.703156, z: -35.09359}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -427,11 +427,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.0224297, y: -0.07790144, z: 0.0017530763, w: 0.9967074}
     speed: 2
-    m_Value: {x: 0.022429697, y: -0.07790143, z: 0.0017530761, w: 0.99670726}
+    m_Value: {x: -0.0224297, y: 0.07790144, z: -0.0017530763, w: -0.9967074}
   m_Size:
-    m_Target: 375.0533
+    m_Target: 398.42966
     speed: 2
-    m_Value: 375.0533
+    m_Value: 398.42966
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -511,10 +511,10 @@ MonoBehaviour:
     height: 566
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
-    scrollPos: {x: 0, y: 75}
-    m_SelectedIDs: ae270000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: d2a1eaff40bdeaff56a8ebff1ef7ebff48ffebff8e17ecff9434ecff7487ecff70a3ecff348bedff9aaaedffdc1defff3466efff7c6eefff6474efff9af6efff88fcefff5417f0fffc05f1ff8807f1ffbc22f1ff787ff1ffac94f1ff08b0f1ffb8caf1ffa4d3f1ff9cd6f1ff9eeff1ff2ef1f1ffec00f2ff36d4f2fff4f2f2ffdefbf2ff3ea1f3ff34b5f3ff00d1f3ffdcd8f3ff44bef4ff1cc3f4ff0ce9f4ffa6eef4ff86f1f4ff7003f5ff5a06f5ff6e7ff5ffd68ef5ffc69ef5ff66b7f5ffc2c1f5fffc6af6ff2aa8f6ff88b2f6ff0c25f7ff1c82f7ffb28af7ff10ccf8ff9ed9f8ffe837f9fffe3ff9ff0ea4f9ff7ebdf9ff72e1f9ff2afff9ffb22bfaffc448faff7a52faff006efaffe293faff90f3feff7855ffffeacfffff5cd1ffff24d4ffff04daffffccdcffffb2fbffff00000000d08e00000c9000004890000074720100ee94010074a60100face01002ccf01009ef401003af501007a160200c21602007a1c0200c21c02002e5b020030600200786002006c820200648702006c87020006ac020024bb02002ef30200aef30200d4f302003af80200baf80200e0f8020024fa02007053030096530300325b030094600300ba600300d2800300b8850300348603005a860300888603008c160500ca1e050008270500ee2b0500f85105009a520500dc5205000ca10500aea10500dca10500f0a10500debf0500cec4050070c5050076c605000aeb050030eb050036ec050084fd0500aafd0500b0fe05009c4506001a490600204a0600086e06002e6f0600546f06008c6f0600a66f060078700600ac7006006c720600
+    m_ExpandedIDs: 0cd9f5ff64daf7ff0e95faff32dffbff4cedfbffa2e3fcffe61cfeff001dfeff021dfeff4488feff0e25fffff63cffffd648ffff4887ffffe4fbffff00000000122f0000803000009431000056550000ec8d0000f68d0000feba000026ed0000a6ed0000a6ee0000e6ee0000424c0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -533,7 +533,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
   m_ExpandedScenes:
-  - GameScene
+  - StartScene
   m_CurrenRootInstanceID: 0
   m_LockTracker:
     m_IsLocked: 0
@@ -575,31 +575,31 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Item
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 32
   m_LastFolders:
-  - Assets/Scripts/Item
+  - Assets/Scenes
   m_LastFoldersGridSize: 32
   m_LastProjectPath: C:\Users\s162159\Documents\CRCL\.git\CRCL\CRCL
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 822c0000
-    m_LastClickedID: 11394
-    m_ExpandedIDs: 00000000122c0000822c0000642d0000c82d0000562f0000683600006a3600006c3600006e36000000ca9a3b
+    m_SelectedIDs: a82b0000
+    m_LastClickedID: 11176
+    m_ExpandedIDs: 00000000562a0000c62a0000a82b00000c2c00009e2d00004e35000050350000523500005435000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Textures
-      m_OriginalName: Textures
+      m_Name: Scripts
+      m_OriginalName: Scripts
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 11528
+      m_UserData: 11276
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -616,7 +616,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000122c0000822c0000642d0000c82d0000683600006a3600006c3600006e36000000ca9a3b
+    m_ExpandedIDs: 00000000562a0000c62a0000a82b00000c2c00009e2d00004e350000503500005235000054350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -643,22 +643,22 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 0431000028280000ba280000d227000072070000ce2a00001624f1ff00000000242f0000
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: 0431000028280000ba280000d227000072070000ce2a00001624f1ff00000000242f0000682c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: GameScene
-      m_OriginalName: GameScene
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 11910
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:

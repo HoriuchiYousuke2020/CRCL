@@ -5,7 +5,6 @@ using UnityEngine;
 public class CreateCameraCollision : MonoBehaviour
 {
     public GameObject prefab;
-
     //上右下左の順
     Vector3[] DIRECTION = 
         {
@@ -32,13 +31,13 @@ public class CreateCameraCollision : MonoBehaviour
                 //
                 Iposition = DIRECTION[i] * 6.0f * (-this.transform.position.z / 10);
                 GameObject obj = Instantiate(prefab, Iposition, Quaternion.identity);
-                obj.transform.localScale = new Vector3(21 * (-this.transform.position.z / 10), 1, 1);
+                obj.transform.localScale = new Vector3(16 * (-this.transform.position.z / 10), 1, 1);
                 obj.transform.parent = this.transform;
             }
             //左右なら
             else
             {
-                Iposition = DIRECTION[i] * 10.5f * (-this.transform.position.z / 10);
+                Iposition = DIRECTION[i] * 8.0f * (-this.transform.position.z / 10);
                 GameObject obj = Instantiate(prefab, Iposition, Quaternion.identity);
                 obj.transform.localScale = new Vector3(1, 12 * (-this.transform.position.z / 10), 1);
                 obj.transform.parent = this.transform;
