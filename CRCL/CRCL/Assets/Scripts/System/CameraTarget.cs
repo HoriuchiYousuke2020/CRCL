@@ -7,7 +7,9 @@ public class CameraTarget : MonoBehaviour
     //カメラの座標をずらすための変数
     public int slide = 0;
     private int m_slide = 0;
-
+    [SerializeField]
+    private float time;
+    float startTime;
     private STATE state;
     [SerializeField]
     private ScoreBank sb;
@@ -30,10 +32,17 @@ public class CameraTarget : MonoBehaviour
     private PlayerController[] player = new PlayerController[4];
 
     // Use this for initialization
+    void Start()
+    {
+        startTime = Time.time;
+    }
 
     // Update is called once per frame
     void Update()
     {
+       
+
+
         if(targetFlag == true)
         {
             for (int i = 0; i < player.Length; i++)
@@ -89,8 +98,13 @@ public class CameraTarget : MonoBehaviour
                     targetValue = i;
                 }
             }
-            
-            this.transform.position = new Vector3(Mathf.Lerp(transform.position.x, player[targetValue].transform.position.x + 4, 60), Mathf.Lerp(transform.position.y, player[targetValue].transform.position.y + 1, 60), this.transform.position.z);
+
+
+            float timeStep = time > 0.0f ? (Time.time - startTime) / time : 1.0f;
+            var vel = Vector3.Lerp(transform.position, player[targetValue].transform.position, 0.1f);
+            vel -= transform.position;
+            vel.z = 0;
+            this.transform.position += vel;
 
         }
         else
