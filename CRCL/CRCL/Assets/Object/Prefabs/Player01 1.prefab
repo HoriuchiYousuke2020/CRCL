@@ -125,8 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a665634906afb04cb5dc900a5313163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerStatus: {fileID: 0}
   m_statusType: {fileID: 11400000, guid: 95fd7b2ea44a9f640874cdda3b3f776a, type: 2}
   m_score: {fileID: 11400000, guid: 0767c0d44f0913f4eaebd470c708e7fa, type: 2}
+  m_rank: {fileID: 0}
   UpKey: 273
   DownKey: 274
   LeftKey: 276
@@ -134,6 +136,12 @@ MonoBehaviour:
   JumpKey: 273
   AttackKey: 120
   ItemKey: 122
+  m_padNum: 0
+  hitEffect: {fileID: 1690024022022038, guid: 7208436514860864c81cdb12a45833f7, type: 2}
+  m_playerNumber: 0
+  GoalDirector: []
+  StartSceneState: 0
+  goalFlag: 0
 --- !u!114 &114541149021664262
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -32,8 +32,10 @@ public class PlayerController : MonoBehaviour
     public KeyCode ItemKey;
 
     [SerializeField]
-   private GamePad.Index m_padNum;
-   
+    private GamePad.Index m_padNum;
+
+    [SerializeField]
+    private GameObject hitEffect;
 
     [SerializeField]
     private int m_playerNumber;
@@ -317,7 +319,10 @@ public class PlayerController : MonoBehaviour
 
     public void Damaged()
     {
-       // m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
+        // m_playerStatus.SetHp(m_playerStatus.GetHp() - 1);
+        Vector3 pos = transform.position;
+        pos.z = -1;
+        Instantiate(hitEffect, pos, Quaternion.identity);
         playerState = PLAYER_STATE.DAMAGED;
         stateTime = 60.0f;
     }

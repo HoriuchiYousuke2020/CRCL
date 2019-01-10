@@ -2423,6 +2423,12 @@ Prefab:
       propertyPath: StartSceneState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114106817703601052, guid: cd4dbafd367fc9646a4567b9bbedae0e,
+        type: 2}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 1690024022022038, guid: 7208436514860864c81cdb12a45833f7,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd4dbafd367fc9646a4567b9bbedae0e, type: 2}
   m_IsPrefabAsset: 0
