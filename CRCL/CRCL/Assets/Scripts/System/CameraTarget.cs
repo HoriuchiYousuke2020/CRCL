@@ -5,9 +5,10 @@ using UnityEngine;
 public class CameraTarget : MonoBehaviour
 {
     //カメラの座標をずらすための変数
+    private int slideTime;
     public int slide = 0;
     private int m_slide = 0;
-    float startTime;
+
     private STATE state;
     [SerializeField]
     private ScoreBank sb;
@@ -134,7 +135,7 @@ public class CameraTarget : MonoBehaviour
     void CameraMove(int topId)
     {
         var targetpos = player[topId].transform.position;
-        targetpos.x -= 4;
+        targetpos.x += 3 + slide;
         var vel = Vector3.Lerp(transform.position, targetpos, 1 / 30.0f);
         vel -= transform.position;
         vel.z = 0;

@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4751610864363484}
   - component: {fileID: 54326676256924548}
-  - component: {fileID: 135388195334652064}
+  - component: {fileID: 135558893865668844}
   m_Layer: 15
   m_Name: haka
   m_TagString: Haka
@@ -202,7 +202,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!135 &135388195334652064
+--- !u!135 &135558893865668844
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,4 +213,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
-  m_Center: {x: 0, y: 0.3, z: 0}
+  m_Center: {x: 0, y: 0.2, z: 0}

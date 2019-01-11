@@ -18,12 +18,14 @@ public class surinuke : MonoBehaviour {
 
     private void OnTriggerEnter(Collider c)
     {
-        c.transform.GetComponent<BoxCollider>().isTrigger = true;
+        if (c.tag == "Player")
+            c.transform.GetComponent<BoxCollider>().isTrigger = true;
      //  parent.SendMessage("OnChildTriggerEnter", c);
         
     }
     private void OnTriggerExit(Collider c)
     {
+        if(c.tag == "Player")
         c.transform.GetComponent<BoxCollider>().isTrigger = false;
        // parent.SendMessage("OnChildTriggerExit", c);
         

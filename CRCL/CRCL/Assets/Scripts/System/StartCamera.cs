@@ -8,7 +8,7 @@ public class StartCamera : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        this.transform.position = new Vector3(0, 105, -15);
+        this.transform.position = new Vector3(3, 105, -15);
     }
 
     // Update is called once per frame
