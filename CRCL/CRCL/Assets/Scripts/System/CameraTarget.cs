@@ -7,8 +7,6 @@ public class CameraTarget : MonoBehaviour
     //カメラの座標をずらすための変数
     public int slide = 0;
     private int m_slide = 0;
-    [SerializeField]
-    private float time;
     float startTime;
     private STATE state;
     [SerializeField]
@@ -25,7 +23,7 @@ public class CameraTarget : MonoBehaviour
         //上下
         new Vector2(110,5),
         //左右
-        new Vector2(-12,12)
+        new Vector2(-15,20)
     };
 
     [SerializeField]
@@ -34,15 +32,11 @@ public class CameraTarget : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        startTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-
-
         if(targetFlag == true)
         {
             for (int i = 0; i < player.Length; i++)
@@ -89,23 +83,11 @@ public class CameraTarget : MonoBehaviour
     {
         if(!sb.STATE)
         {
-            int targetValue = 0;
-            //高いプレイヤの番号を取得
-            for (int i = 0; i < Setting.PlayerNum; i++)
-            {
-                if (player[i].transform.position.y > player[targetValue].transform.position.y)
-                {
-                    targetValue = i;
-                }
-            }
+            int topId = SearchTop();
 
+            CameraMove(topId);
 
-            float timeStep = time > 0.0f ? (Time.time - startTime) / time : 1.0f;
-            var vel = Vector3.Lerp(transform.position, player[targetValue].transform.position, 0.1f);
-            vel -= transform.position;
-            vel.z = 0;
-            this.transform.position += vel;
-
+            Limit();
         }
         else
         {
@@ -123,6 +105,43 @@ public class CameraTarget : MonoBehaviour
     {
         transform.position = new Vector3(-0.7f, 102.51f, -15f);
     }
+
+
+    void Limit()
+    {
+        //上下左右
+        if (this.transform.position.y > CameraLimit[0].x) this.transform.position = new Vector3(this.transform.position.x, CameraLimit[0].x, this.transform.position.z);
+        if (this.transform.position.y < CameraLimit[0].y) this.transform.position = new Vector3(this.transform.position.x, CameraLimit[0].y, this.transform.position.z);
+        if (this.transform.position.x < CameraLimit[1].x) this.transform.position = new Vector3(CameraLimit[1].x, this.transform.position.y, this.transform.position.z);
+        if (this.transform.position.x > CameraLimit[1].y) this.transform.position = new Vector3(CameraLimit[1].y, this.transform.position.y, this.transform.position.z);
+
+    }
+
+    //高いプレイヤの番号を取得
+    int SearchTop()
+    {
+        int topValue = 0;
+        for (int i = 0; i < Setting.PlayerNum; i++)
+        {
+            if (player[i].transform.position.y > player[topValue].transform.position.y)
+            {
+                topValue = i;
+            }
+        }
+        return topValue;
+    }
+
+    void CameraMove(int topId)
+    {
+        var targetpos = player[topId].transform.position;
+        targetpos.x -= 4;
+        var vel = Vector3.Lerp(transform.position, targetpos, 1 / 30.0f);
+        vel -= transform.position;
+        vel.z = 0;
+        this.transform.position += vel;
+    }
+    //get
+    //set
 
     public int Slide
     {

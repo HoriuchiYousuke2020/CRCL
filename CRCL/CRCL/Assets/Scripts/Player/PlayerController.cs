@@ -38,7 +38,11 @@ public class PlayerController : MonoBehaviour
     private GameObject hitEffect;
 
     [SerializeField]
+    private GameObject haka;
+
+    [SerializeField]
     private int m_playerNumber;
+
 
     public int PLAYER_NUM
     {
@@ -116,7 +120,7 @@ public class PlayerController : MonoBehaviour
             this.transform.position = new Vector3(pos.x, pos.y, 0);
             rb.velocity = Vector3.zero;
             m_outFlag = false;
-            ColorChangeA(0.5f);
+            ColorChangeA(0.3f);
             playerState = PLAYER_STATE.PRESSED;
             stateTime = 120.0f;
         }
@@ -228,6 +232,7 @@ public class PlayerController : MonoBehaviour
       
         if (stateTime <= 0)
         {
+            Instantiate(haka, transform.position, Quaternion.identity);
             m_downFlag = true;
             playerState = PLAYER_STATE.NORMAL;
             ColorChangeA(1.0f);
@@ -242,6 +247,7 @@ public class PlayerController : MonoBehaviour
         stateTime -= 60.0f * Time.deltaTime;
         if (stateTime <= 0)
         {
+            Instantiate(haka, transform.position, Quaternion.identity);
             m_downFlag = true;
             playerState = PLAYER_STATE.NORMAL;
             ColorChangeA(1.0f);
@@ -329,7 +335,7 @@ public class PlayerController : MonoBehaviour
 
     void Swoon()
     {
-        ColorChangeA(0.5f);
+        ColorChangeA(0.3f);
         playerState = PLAYER_STATE.SWOON;
         stateTime = 300.0f;
     }
@@ -353,7 +359,7 @@ public class PlayerController : MonoBehaviour
             this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             rb.velocity = Vector3.zero;
             col.SetIsPress(false);
-            ColorChangeA(0.5f);
+            ColorChangeA(0.3f);
             playerState = PLAYER_STATE.PRESSED;
             stateTime = 120.0f;
         

@@ -11,6 +11,7 @@ TagManager:
   - Floor
   - MoveRange
   - Goal
+  - Haka
   layers:
   - Default
   - TransparentFX
