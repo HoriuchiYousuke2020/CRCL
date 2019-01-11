@@ -30,6 +30,7 @@ public class CreateCameraCollision : MonoBehaviour
             {
                 //
                 Iposition = DIRECTION[i] * 6.0f * (-this.transform.position.z / 10);
+                Iposition.y += 5;
                 GameObject obj = Instantiate(prefab, Iposition, Quaternion.identity);
                 obj.transform.localScale = new Vector3(16 * (-this.transform.position.z / 10), 1, 1);
                 obj.transform.parent = this.transform;
@@ -38,6 +39,7 @@ public class CreateCameraCollision : MonoBehaviour
             else
             {
                 Iposition = DIRECTION[i] * 8.0f * (-this.transform.position.z / 10);
+                Iposition.y += 5;
                 GameObject obj = Instantiate(prefab, Iposition, Quaternion.identity);
                 obj.transform.localScale = new Vector3(1, 12 * (-this.transform.position.z / 10), 1);
                 obj.transform.parent = this.transform;

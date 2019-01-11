@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4376096610825140}
   - component: {fileID: 33436627659951636}
   - component: {fileID: 23372403468427640}
-  m_Layer: 15
+  m_Layer: 17
   m_Name: Box002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4447129221709276}
   - component: {fileID: 33922627220059182}
   - component: {fileID: 23519335845778642}
-  m_Layer: 15
+  m_Layer: 17
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4751610864363484}
   - component: {fileID: 54326676256924548}
   - component: {fileID: 135558893865668844}
-  m_Layer: 15
+  m_Layer: 17
   m_Name: haka
   m_TagString: Haka
   m_Icon: {fileID: 0}

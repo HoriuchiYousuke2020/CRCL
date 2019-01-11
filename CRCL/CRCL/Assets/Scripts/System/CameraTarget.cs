@@ -136,7 +136,7 @@ public class CameraTarget : MonoBehaviour
     {
         var targetpos = player[topId].transform.position;
         targetpos.x += 3 + slide;
-        var vel = Vector3.Lerp(transform.position, targetpos, 1 / 30.0f);
+        var vel = Vector3.Lerp(transform.position, targetpos, 1 / 20.0f);
         vel -= transform.position;
         vel.z = 0;
         this.transform.position += vel;
