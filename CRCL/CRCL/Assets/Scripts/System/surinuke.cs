@@ -18,7 +18,7 @@ public class surinuke : MonoBehaviour {
 
     private void OnTriggerEnter(Collider c)
     {
-        if (c.tag == "Player")
+        if (c.tag == "Player" && this.transform.position.y > c.transform.position.y)
             c.transform.GetComponent<BoxCollider>().isTrigger = true;
      //  parent.SendMessage("OnChildTriggerEnter", c);
         
